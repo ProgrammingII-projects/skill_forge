@@ -1,0 +1,242 @@
+<mxfile host="65bd71144e">
+    <diagram id="-67aZSM_SZl6axVcLyjg" name="Page-1">
+        <mxGraphModel dx="3413" dy="1131" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#000000" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="BrowseUI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="-94" y="60" width="120" height="51" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" style="edgeStyle=none;html=1;strokeColor=#FFFFFF;fontColor=#FAFAFA;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="553" y="375" as="targetPoint"/>
+                        <mxPoint x="159.19999999999982" y="375" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" style="edgeStyle=none;html=1;strokeColor=#FFFFFF;fontColor=#FAFAFA;" edge="1" parent="1" source="6">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-564" y="320" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" style="edgeStyle=none;html=1;strokeColor=#FFFFFF;fontColor=#FAFAFA;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="156" y="352" as="targetPoint"/>
+                        <mxPoint x="-32.83333333333303" y="352" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="6" value="" style="line;strokeWidth=4;direction=south;html=1;perimeter=backbonePerimeter;points=[];outlineConnect=0;fontColor=#ffffff;fillColor=#0050ef;strokeColor=#001DBC;" vertex="1" parent="1">
+                    <mxGeometry x="-39" y="280" width="10" height="320" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" style="edgeStyle=none;html=1;strokeColor=#FFFFFF;fontColor=#FAFAFA;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="10" target="42">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="524" y="340" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="8" style="edgeStyle=none;html=1;strokeColor=#FFFFFF;fontColor=#FAFAFA;" edge="1" parent="1" source="17">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="356" y="260" as="targetPoint"/>
+                        <mxPoint x="-19.17647058823559" y="260" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="9" style="edgeStyle=none;html=1;strokeColor=#FFFFFF;fontColor=#FAFAFA;dashed=1;" edge="1" parent="1" source="57">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-564" y="510" as="targetPoint"/>
+                        <mxPoint x="156" y="440" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="" style="line;strokeWidth=4;direction=south;html=1;perimeter=backbonePerimeter;points=[];outlineConnect=0;fontColor=#ffffff;fillColor=#0050ef;strokeColor=#001DBC;" vertex="1" parent="1">
+                    <mxGeometry x="549" y="370" width="10" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="Student" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="60" width="120" height="51" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="CourseServices" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="300" y="60" width="120" height="51" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" style="edgeStyle=none;html=1;strokeColor=#FFFFFF;fontColor=#FAFAFA;dashed=1;entryX=0.137;entryY=1.056;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="14" target="35">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-200" y="220" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="" style="line;strokeWidth=4;direction=south;html=1;perimeter=backbonePerimeter;points=[];outlineConnect=0;fontColor=#ffffff;fillColor=#0050ef;strokeColor=#001DBC;" vertex="1" parent="1">
+                    <mxGeometry x="929" y="190" width="10" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="MainUI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="-284" y="60" width="120" height="51" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" style="edgeStyle=none;html=1;strokeColor=#FFFFFF;fontColor=#FAFAFA;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-234" y="261" as="targetPoint"/>
+                        <mxPoint x="-574.5" y="261" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" value="" style="line;strokeWidth=4;direction=south;html=1;perimeter=backbonePerimeter;points=[];outlineConnect=0;fontColor=#ffffff;fillColor=#0050ef;strokeColor=#001DBC;" vertex="1" parent="1">
+                    <mxGeometry x="-229" y="230" width="10" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Select course" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="-134" y="267" width="90" height="42" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="Student&amp;nbsp;&lt;br&gt;&amp;lt;Actor&amp;gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="-634" y="60" width="120" height="51" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" style="edgeStyle=none;html=1;strokeColor=#FFFFFF;fontColor=#FAFAFA;" edge="1" parent="1" source="23">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-564" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" style="edgeStyle=none;html=1;strokeColor=#FFFFFF;fontColor=#FAFAFA;exitX=0.521;exitY=0.46;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="29">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-234" y="244" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" style="edgeStyle=none;html=1;strokeColor=#FFFFFF;fontColor=#FAFAFA;exitX=0.065;exitY=-0.02;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="35">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="920" y="200" as="targetPoint"/>
+                        <mxPoint x="-204.1764705882356" y="200" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="23" value="" style="line;strokeWidth=4;direction=south;html=1;perimeter=backbonePerimeter;points=[];outlineConnect=0;fontColor=#ffffff;fillColor=#0050ef;strokeColor=#001DBC;" vertex="1" parent="1">
+                    <mxGeometry x="-414" y="150" width="10" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" style="edgeStyle=none;html=1;strokeColor=#FFFFFF;fontColor=#FAFAFA;" edge="1" parent="1" source="28">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-424" y="170" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" style="edgeStyle=none;html=1;strokeColor=#FFFFFF;fontColor=#FAFAFA;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-43" y="296" as="targetPoint"/>
+                        <mxPoint x="-571.8333333333333" y="296" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="26" style="edgeStyle=none;html=1;strokeColor=#FFFFFF;fontColor=#FAFAFA;" edge="1" parent="1" source="28">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-44" y="340" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="27" style="edgeStyle=none;html=1;fontColor=#FFFFFF;strokeWidth=1;strokeColor=#FAFAFA;" edge="1" parent="1" source="28">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-44" y="560" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="28" value="" style="line;strokeWidth=2;direction=south;html=1;perimeter=backbonePerimeter;points=[];outlineConnect=0;fontColor=#ffffff;fillColor=#0050ef;strokeColor=#fcfcfd;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="-579" y="150" width="10" height="480" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="" style="shape=umlDestroy;whiteSpace=wrap;html=1;strokeWidth=3;strokeColor=#FFFFFF;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="-424" y="230" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="Login as Student" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="-459" y="60" width="120" height="51" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="Login Successfully&amp;nbsp;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="-559" y="198" width="120" height="42" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="Enter Login Credintials" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="-569" y="140" width="140" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="Choose: Browse courses" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="-384" y="240" width="140" height="27" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="Choose: Enrole corse" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="-174" y="305" width="120" height="49" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="TheStudent" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="-414" y="200" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="UserService.Login(email,Password)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="784" y="170" width="90" height="42" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="TheStudent" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="-414" y="227" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" style="edgeStyle=none;html=1;strokeColor=#FFFFFF;fontColor=#FAFAFA;dashed=1;entryX=0.063;entryY=0.967;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="39" target="43">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="374" y="430" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="39" value="" style="line;strokeWidth=4;direction=south;html=1;perimeter=backbonePerimeter;points=[];outlineConnect=0;fontColor=#ffffff;fillColor=#0050ef;strokeColor=#001DBC;" vertex="1" parent="1">
+                    <mxGeometry x="739" y="390" width="10" height="52" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="student.enrole(courseID)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="430" y="343" width="93" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="Confirm Enrollment" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="-559" y="290" width="120" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="&amp;lt;&amp;lt;Create&lt;span style=&quot;font-size: 10px;&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="649" y="370" width="90" height="42" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="Enrollment" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="549" y="395" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="Enrollment&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="680" y="60" width="120" height="51" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" style="edgeStyle=none;html=1;dashed=1;strokeColor=#FFFFFF;fontColor=#FAFAFA;" edge="1" parent="1" source="46" target="6">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-24" y="280" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="46" value="" style="line;strokeWidth=4;direction=south;html=1;perimeter=backbonePerimeter;points=[];outlineConnect=0;fontColor=#ffffff;fillColor=#0050ef;strokeColor=#001DBC;" vertex="1" parent="1">
+                    <mxGeometry x="359" y="258" width="10" height="22" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="UserService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="870" y="60" width="120" height="51" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="&lt;span style=&quot;color: rgb(255, 255, 255);&quot;&gt;CourseServices.&lt;/span&gt;GetAllRecords" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="221" y="231" width="90" height="42" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="courses Records" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="190" y="251" width="100" height="42" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="" style="shape=umlDestroy;whiteSpace=wrap;html=1;strokeWidth=3;strokeColor=#FFFFFF;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="357.75" y="278" width="12.5" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="" style="shape=umlDestroy;whiteSpace=wrap;html=1;strokeWidth=3;strokeColor=#FFFFFF;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="547.75" y="447.5" width="12.5" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="" style="shape=umlDestroy;whiteSpace=wrap;html=1;strokeWidth=3;strokeColor=#FFFFFF;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="737.75" y="435" width="12.5" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="" style="shape=umlDestroy;whiteSpace=wrap;html=1;strokeWidth=3;strokeColor=#FFFFFF;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="927.75" y="225" width="12.5" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="" style="line;strokeWidth=4;direction=south;html=1;perimeter=backbonePerimeter;points=[];outlineConnect=0;fontColor=#ffffff;fillColor=#0050ef;strokeColor=#001DBC;" vertex="1" parent="1">
+                    <mxGeometry x="931.5" y="470" width="5" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="Enrollment Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="101" y="60" width="120" height="51" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" style="edgeStyle=none;html=1;strokeColor=#FAFAFA;strokeWidth=1;fontColor=#FFFFFF;" edge="1" parent="1" source="57" target="54">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="836" y="500" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="57" value="" style="line;strokeWidth=4;direction=south;html=1;perimeter=backbonePerimeter;points=[];outlineConnect=0;fontColor=#ffffff;fillColor=#0050ef;strokeColor=#001DBC;" vertex="1" parent="1">
+                    <mxGeometry x="156" y="350" width="10" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="Message: Enrolled in Course" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="-544" y="480" width="180" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="" style="shape=umlDestroy;whiteSpace=wrap;html=1;strokeWidth=3;strokeColor=#FFFFFF;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="154.75" y="520" width="12.5" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="Press: Ok" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="-144" y="530" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="userService.saveChanges()" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="806" y="435" width="90" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="" style="shape=umlDestroy;whiteSpace=wrap;html=1;strokeWidth=3;strokeColor=#FFFFFF;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="927.75" y="510" width="12.5" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="&amp;lt;&amp;lt;Create&lt;span style=&quot;font-size: 10px;&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FAFAFA;" vertex="1" parent="1">
+                    <mxGeometry x="77.25" y="323" width="90" height="42" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="&lt;h1 data-end=&quot;706&quot; data-start=&quot;662&quot;&gt;&lt;strong data-end=&quot;706&quot; data-start=&quot;666&quot;&gt;Course Enrollment Sequence Diagram&lt;/strong&gt;&lt;/h1&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;The sequence diagram models the step-by-step interaction between the student, user interfaces, controllers, services, and database during the course enrollment process. &lt;br&gt;It highlights how data flows through the system, showing the order of method calls and object interactions required to complete enrollment. &lt;br&gt;This diagram is essential for validating system behavior and ensuring that each component collaborates correctly.&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#3700CC;fillColor=#6a00ff;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="-1080" y="710" width="930" height="120" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
