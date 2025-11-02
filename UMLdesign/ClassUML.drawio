@@ -1,10 +1,10 @@
 <mxfile host="65bd71144e">
     <diagram name="Page-1" id="7phjNOhUCmnBOA5IgRG7">
-        <mxGraphModel dx="2450" dy="1500" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+        <mxGraphModel dx="1122" dy="359" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="186" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fillColor=#e3c800;strokeColor=#B09500;" edge="1" parent="1" source="68">
+                <mxCell id="186" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fillColor=#e3c800;strokeColor=#B09500;" parent="1" source="68" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="920" y="1067"/>
@@ -447,13 +447,13 @@
                 <mxCell id="159" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;+register(u:User,Type:String):void&lt;/span&gt;&lt;/div&gt;+login(email:String,password:String)&lt;span style=&quot;background-color: initial;&quot;&gt;:User&lt;/span&gt;" style="text;strokeColor=#d6b656;fillColor=#fff2cc;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;gradientColor=#ffd966;" parent="157" vertex="1">
                     <mxGeometry y="34" width="312" height="106" as="geometry"/>
                 </mxCell>
-                <mxCell id="197" value="&lt;span style=&quot;font-weight: normal;&quot;&gt;EnrollService&lt;/span&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;" vertex="1" parent="153">
+                <mxCell id="197" value="&lt;span style=&quot;font-weight: normal;&quot;&gt;EnrollService&lt;/span&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;" parent="153" vertex="1">
                     <mxGeometry x="955" y="46" width="257" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="198" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="197">
+                <mxCell id="198" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="197" vertex="1">
                     <mxGeometry y="26" width="257" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="199" value="+enroll(s:Student,c:Course):void&lt;br&gt;+searchEnrollment(enrollmentID):Enrollment&lt;br&gt;+updateProgress():void&lt;div&gt;+makeComplete():void&lt;/div&gt;&lt;div&gt;+isComplete():boolean&lt;/div&gt;&lt;div&gt;&lt;/div&gt;" style="text;strokeColor=#d6b656;fillColor=#fff2cc;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;gradientColor=#ffd966;" vertex="1" parent="197">
+                <mxCell id="199" value="+enroll(s:Student,c:Course):void&lt;br&gt;+searchEnrollment(enrollmentID):Enrollment&lt;br&gt;+updateProgress():void&lt;div&gt;+makeComplete():void&lt;/div&gt;&lt;div&gt;+isComplete():boolean&lt;/div&gt;&lt;div&gt;&lt;/div&gt;" style="text;strokeColor=#d6b656;fillColor=#fff2cc;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;gradientColor=#ffd966;" parent="197" vertex="1">
                     <mxGeometry y="34" width="257" height="106" as="geometry"/>
                 </mxCell>
                 <mxCell id="160" value="Layer service" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
@@ -500,18 +500,18 @@
                     <mxGeometry x="390" y="329" width="997.5" height="707" as="geometry"/>
                 </mxCell>
                 <mxCell id="55" value="User" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=#ffd966;" parent="167" vertex="1">
-                    <mxGeometry x="299" y="23" width="202" height="261" as="geometry"/>
+                    <mxGeometry x="299" y="23" width="202" height="273" as="geometry"/>
                 </mxCell>
-                <mxCell id="56" value="#userID:String&lt;div&gt;#username:String&lt;/div&gt;&lt;div&gt;#email:String&lt;/div&gt;&lt;div&gt;#password:String&lt;/div&gt;" style="text;strokeColor=#d6b656;fillColor=#fff2cc;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;gradientColor=#ffd966;" parent="55" vertex="1">
-                    <mxGeometry y="26" width="202" height="74" as="geometry"/>
+                <mxCell id="56" value="#userID:String&lt;div&gt;#username:String&lt;/div&gt;&lt;div&gt;#email:String&lt;/div&gt;&lt;div&gt;#password:String&lt;/div&gt;&lt;div&gt;#userType :String&lt;/div&gt;" style="text;strokeColor=#d6b656;fillColor=#fff2cc;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;gradientColor=#ffd966;" parent="55" vertex="1">
+                    <mxGeometry y="26" width="202" height="86" as="geometry"/>
                 </mxCell>
                 <mxCell id="57" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="55" vertex="1">
-                    <mxGeometry y="100" width="202" height="8" as="geometry"/>
+                    <mxGeometry y="112" width="202" height="8" as="geometry"/>
                 </mxCell>
                 <mxCell id="58" value="+getID():String&lt;div&gt;+getEmail():String&lt;br&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+setEmail(String email)&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+setPassword(String password)&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+getPassword()&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+getEmail()&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+setUsername(String username)&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+getUsername&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+setUserID&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+getUserID&lt;/span&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;" style="text;strokeColor=#d6b656;fillColor=#fff2cc;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;gradientColor=#ffd966;" parent="55" vertex="1">
-                    <mxGeometry y="108" width="202" height="153" as="geometry"/>
+                    <mxGeometry y="120" width="202" height="153" as="geometry"/>
                 </mxCell>
-                <mxCell id="177" value="uses&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="endArrow=none;html=1;exitX=0.567;exitY=0.879;exitDx=0;exitDy=0;exitPerimeter=0;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;entryX=0.193;entryY=1.034;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="109" target="156">
+                <mxCell id="177" value="uses&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="endArrow=none;html=1;exitX=0.567;exitY=0.879;exitDx=0;exitDy=0;exitPerimeter=0;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;entryX=0.193;entryY=1.034;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="109" target="156" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="487" y="1147" as="sourcePoint"/>
                         <mxPoint x="2000" y="2030" as="targetPoint"/>
@@ -521,7 +521,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="196" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#B09500;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="197" target="75">
+                <mxCell id="196" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#B09500;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" parent="1" source="197" target="75" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="-130" y="860.15380859375" as="targetPoint"/>
                         <Array as="points">
@@ -532,12 +532,12 @@
                         <mxPoint x="2210" y="1990" as="sourcePoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="201" value="Creates" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="196">
+                <mxCell id="201" value="Creates" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="196" connectable="0" vertex="1">
                     <mxGeometry x="0.1296" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="202" style="edgeStyle=none;html=1;strokeColor=light-dark(#B09500,#FFFFFF);endArrow=block;endFill=0;strokeWidth=1;endSize=10;fillColor=#e3c800;" edge="1" parent="1" source="197" target="99">
+                <mxCell id="202" style="edgeStyle=none;html=1;strokeColor=light-dark(#B09500,#FFFFFF);endArrow=block;endFill=0;strokeWidth=1;endSize=10;fillColor=#e3c800;" parent="1" source="197" target="99" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="2299" y="1680"/>
@@ -547,12 +547,12 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="203" value="Extends" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="202">
+                <mxCell id="203" value="Extends" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="202" connectable="0" vertex="1">
                     <mxGeometry x="0.1218" y="-1" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="205" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#B09500;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" target="170">
+                <mxCell id="205" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#B09500;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" parent="1" target="170" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="-100" y="663" as="targetPoint"/>
                         <Array as="points">
@@ -563,7 +563,7 @@
                         <mxPoint x="2372.75" y="1910" as="sourcePoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="206" value="Uses" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="205">
+                <mxCell id="206" value="Uses" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="205" connectable="0" vertex="1">
                     <mxGeometry x="0.1296" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
@@ -571,7 +571,7 @@
                 <mxCell id="168" value="Student" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=#ffd966;" parent="1" vertex="1">
                     <mxGeometry x="410" y="783" width="227" height="217" as="geometry"/>
                 </mxCell>
-                <mxCell id="182" value="-enrolledCourses:List&amp;lt;String&amp;gt;&lt;div&gt;-enrolledStatus:List&amp;lt;String&amp;gt;&lt;div style=&quot;color: rgb(192, 192, 192); scrollbar-color: rgb(75, 75, 75) rgb(27, 29, 30);&quot;&gt;-Certificates:List&amp;lt;String&amp;gt;&amp;nbsp;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;" vertex="1" parent="168">
+                <mxCell id="182" value="-enrolledCourses:List&amp;lt;String&amp;gt;&lt;div&gt;-enrolledStatus:List&amp;lt;String&amp;gt;&lt;div style=&quot;color: rgb(192, 192, 192); scrollbar-color: rgb(75, 75, 75) rgb(27, 29, 30);&quot;&gt;-Certificates:List&amp;lt;String&amp;gt;&amp;nbsp;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;" parent="168" vertex="1">
                     <mxGeometry y="26" width="227" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="169" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="168" vertex="1">
@@ -592,7 +592,7 @@
                 <mxCell id="59" value="Instructor" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=#ffd966;" parent="1" vertex="1">
                     <mxGeometry x="708" y="860" width="290" height="160" as="geometry"/>
                 </mxCell>
-                <mxCell id="183" value="-createdCourses:List&amp;lt;String&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;" vertex="1" parent="59">
+                <mxCell id="183" value="-createdCourses:List&amp;lt;String&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;" parent="59" vertex="1">
                     <mxGeometry y="26" width="290" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="60" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="59" vertex="1">
