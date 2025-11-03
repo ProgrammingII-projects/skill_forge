@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Page-1" id="7phjNOhUCmnBOA5IgRG7">
-        <mxGraphModel dx="3227" dy="1382" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+        <mxGraphModel dx="1042" dy="563" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -48,7 +48,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="77" value="0...*&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="76" vertex="1" connectable="0">
+                <mxCell id="77" value="&lt;div&gt;1...*&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="76" vertex="1" connectable="0">
                     <mxGeometry x="-0.1457" y="5" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
@@ -92,17 +92,17 @@
                 <mxCell id="87" value="+addLesson(l:Lesson):void&lt;div&gt;+addQuiz(q:Quiz):void&lt;/div&gt;&lt;div&gt;&lt;/div&gt;" style="text;strokeColor=#d6b656;fillColor=#fff2cc;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;gradientColor=#ffd966;" parent="84" vertex="1">
                     <mxGeometry y="148" width="258" height="51" as="geometry"/>
                 </mxCell>
-                <mxCell id="88" value="" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;fillColor=#e3c800;strokeColor=#B09500;" parent="1" source="182" target="72" edge="1">
+                <mxCell id="88" value="" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;fillColor=#e3c800;strokeColor=#B09500;" parent="1" edge="1">
                     <mxGeometry x="-1" relative="1" as="geometry">
-                        <mxPoint x="270" y="990" as="sourcePoint"/>
-                        <mxPoint x="430" y="990" as="targetPoint"/>
+                        <mxPoint x="405" y="820" as="sourcePoint"/>
+                        <mxPoint x="145" y="570" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="220" y="823"/>
-                            <mxPoint x="220" y="574"/>
+                            <mxPoint x="215" y="819"/>
+                            <mxPoint x="215" y="570"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="89" value="0..*&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="88" vertex="1" connectable="0">
+                <mxCell id="89" value="&lt;div&gt;1..*&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="88" vertex="1" connectable="0">
                     <mxGeometry x="-0.0026" y="1" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
@@ -191,7 +191,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="111" value="0...*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="110" vertex="1" connectable="0">
+                <mxCell id="111" value="1..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="110" vertex="1" connectable="0">
                     <mxGeometry x="-0.2064" y="-1" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
@@ -221,7 +221,7 @@
                 <mxCell id="115" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" parent="114" connectable="0" vertex="1">
                     <mxGeometry x="-1" relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="116" value="0...*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="114" vertex="1" connectable="0">
+                <mxCell id="116" value="1..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="114" vertex="1" connectable="0">
                     <mxGeometry x="-0.5009" y="2" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
@@ -285,7 +285,7 @@
                 <mxCell id="128" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" parent="127" connectable="0" vertex="1">
                     <mxGeometry x="-1" relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="129" value="0...*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="127" vertex="1" connectable="0">
+                <mxCell id="129" value="1..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="127" vertex="1" connectable="0">
                     <mxGeometry x="-0.0143" y="-2" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
@@ -374,7 +374,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="143" value="0...*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="142" vertex="1" connectable="0">
+                <mxCell id="143" value="1..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="142" vertex="1" connectable="0">
                     <mxGeometry x="-0.0691" y="1" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
@@ -634,7 +634,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="207" value="&lt;h1 data-end=&quot;174&quot; data-start=&quot;133&quot;&gt;&lt;strong data-end=&quot;174&quot; data-start=&quot;137&quot;&gt;Class Diagram – Short Explanation&lt;/strong&gt;&lt;/h1&gt;&lt;br&gt;&lt;p data-is-only-node=&quot;&quot; data-is-last-node=&quot;&quot; data-end=&quot;653&quot; data-start=&quot;176&quot;&gt;The class diagram defines the structural blueprint of the SkillForge system by representing its main classes—such as User, Course, Lesson, Quiz, Certificate, and EnrollmentStatus—and the relationships between them.&lt;br&gt;&amp;nbsp;It shows inheritance among user types, composition between courses and their content, and associations between students and their course progress. &lt;br&gt;This diagram is crucial for establishing the system’s data model and ensuring consistent design across all modules.&lt;/p&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#d6b656;fillColor=#fff2cc;gradientColor=#ffd966;" vertex="1" parent="1">
+                <mxCell id="207" value="&lt;h1 data-end=&quot;174&quot; data-start=&quot;133&quot;&gt;&lt;strong data-end=&quot;174&quot; data-start=&quot;137&quot;&gt;Class Diagram – Short Explanation&lt;/strong&gt;&lt;/h1&gt;&lt;br&gt;&lt;p data-is-only-node=&quot;&quot; data-is-last-node=&quot;&quot; data-end=&quot;653&quot; data-start=&quot;176&quot;&gt;The class diagram defines the structural blueprint of the SkillForge system by representing its main classes—such as User, Course, Lesson, Quiz, Certificate, and EnrollmentStatus—and the relationships between them.&lt;br&gt;&amp;nbsp;It shows inheritance among user types, composition between courses and their content, and associations between students and their course progress. &lt;br&gt;This diagram is crucial for establishing the system’s data model and ensuring consistent design across all modules.&lt;/p&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#d6b656;fillColor=#fff2cc;gradientColor=#ffd966;" parent="1" vertex="1">
                     <mxGeometry x="1085" y="56" width="1176" height="155" as="geometry"/>
                 </mxCell>
             </root>
