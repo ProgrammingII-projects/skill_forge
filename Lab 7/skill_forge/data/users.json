@@ -1,0 +1,72 @@
+[
+  {
+    "role": "student",
+    "enrolledCourses": [
+      "b42a8d99-d758-4808-810d-8d1ad3396ce6",
+      "9f975e6b-605b-4411-a701-4a0656a01c55"
+    ],
+    "progress": {
+      "9f975e6b-605b-4411-a701-4a0656a01c55": [
+        "5029b250-eacf-4897-bb32-4338576b6827",
+        "62ed92f8-67c3-4719-a568-c8faf32ce03d"
+      ],
+      "b42a8d99-d758-4808-810d-8d1ad3396ce6": ["65559d90-6ec6-437a-863a-0a8fd89bc8e9"]
+    },
+    "userId": "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1",
+    "email": "zgebr@gmail.com",
+    "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+    "username": "Ziad Gebril"
+  },
+  {
+    "role": "instructor",
+    "enrolledCourses": [],
+    "progress": {},
+    "userId": "02d44643-bdee-4e18-8745-434445a36ea7",
+    "email": "m@g.com",
+    "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+    "username": "magdy"
+  },
+  {
+    "role": "student",
+    "enrolledCourses": [
+      "f1a4d8df-91cd-4d5c-9f8d-dbb1c0cc5c1a",
+      "d54c1b82-7cc3-4c4b-88b3-38fe1c2a0671"
+    ],
+    "progress": {
+      "f1a4d8df-91cd-4d5c-9f8d-dbb1c0cc5c1a": [
+        "8d8b07ab-3428-4d95-8a77-1f6576f497ed"
+      ],
+      "d54c1b82-7cc3-4c4b-88b3-38fe1c2a0671": [
+        "c0a7b418-4f58-4e06-876d-0ddc589a4b02",
+        "9aca9840-8969-4332-9644-d3b6fba014e1"
+      ]
+    },
+    "userId": "e52cf2ec-62e2-4d57-b3bc-47080d1f1450",
+    "email": "student1@example.com",
+    "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+    "username": "John Carter"
+  },
+  {
+    "role": "student",
+    "enrolledCourses": [
+      "f1a4d8df-91cd-4d5c-9f8d-dbb1c0cc5c1a"
+    ],
+    "progress": {
+      "f1a4d8df-91cd-4d5c-9f8d-dbb1c0cc5c1a": []
+    },
+    "userId": "0fe30a4d-79d6-4200-9c2e-f9617b835df5",
+    "email": "student2@example.com",
+    "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+    "username": "Lina Morris"
+  },
+  {
+    "role": "instructor",
+    "enrolledCourses": [],
+    "progress": {},
+    "userId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
+    "email": "instructor1@example.com",
+    "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+    "username": "Dr. Hamilton"
+  }
+]
+

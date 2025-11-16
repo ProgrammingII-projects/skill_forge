@@ -1,0 +1,94 @@
+[
+  {
+    "description": "and or not",
+    "students": ["4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"],
+    "title": "logic",
+    "courseId": "9f975e6b-605b-4411-a701-4a0656a01c55",
+    "instructorId": "02d44643-bdee-4e18-8745-434445a36ea7",
+    "lessons": [
+      {
+        "lessonId": "5029b250-eacf-4897-bb32-4338576b6827",
+        "title": "boolean",
+        "content": "boolean math"
+      },
+      {
+        "lessonId": "62ed92f8-67c3-4719-a568-c8faf32ce03d",
+        "title": "logic gates",
+        "content": "and or not"
+      },
+      {
+        "lessonId": "2db7c537-b830-4cb8-a275-660b11e45da7",
+        "title": "key map",
+        "content": "how to key map"
+      }
+    ]
+  },
+  {
+    "description": "quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum",
+    "students": ["4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"],
+    "title": "modern",
+    "courseId": "b42a8d99-d758-4808-810d-8d1ad3396ce6",
+    "instructorId": "02d44643-bdee-4e18-8745-434445a36ea7",
+    "lessons": [
+      {
+        "lessonId": "65559d90-6ec6-437a-863a-0a8fd89bc8e9",
+        "title": "quantum",
+        "content": "quantum quantum quantum"
+      },
+      {
+        "lessonId": "4b664149-9e6d-43f4-8f88-90a7e09c5e21",
+        "title": "relativity",
+        "content": "E = MC^2"
+      }
+    ]
+  },
+    {
+      "description": "Learn variables, functions, control flow, and data structures.",
+      "students": [
+        "e52cf2ec-62e2-4d57-b3bc-47080d1f1450",
+        "0fe30a4d-79d6-4200-9c2e-f9617b835df5"
+      ],
+      "title": "Programming Basics",
+      "courseId": "f1a4d8df-91cd-4d5c-9f8d-dbb1c0cc5c1a",
+      "instructorId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
+      "lessons": [
+        {
+          "lessonId": "8d8b07ab-3428-4d95-8a77-1f6576f497ed",
+          "title": "Variables & Types",
+          "content": "Introduction to data types and variables."
+        },
+        {
+          "lessonId": "fc0d5f19-f3f8-4aae-9e89-4dc1b32e682b",
+          "title": "Control Flow",
+          "content": "If-else, loops, and logic structures."
+        }
+      ]
+    },
+    {
+      "description": "Learn fundamentals of web development: HTML, CSS, JavaScript.",
+      "students": [
+        "e52cf2ec-62e2-4d57-b3bc-47080d1f1450"
+      ],
+      "title": "Web Development",
+      "courseId": "d54c1b82-7cc3-4c4b-88b3-38fe1c2a0671",
+      "instructorId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
+      "lessons": [
+        {
+          "lessonId": "c0a7b418-4f58-4e06-876d-0ddc589a4b02",
+          "title": "HTML Basics",
+          "content": "Structure web pages using HTML."
+        },
+        {
+          "lessonId": "9aca9840-8969-4332-9644-d3b6fba014e1",
+          "title": "CSS Fundamentals",
+          "content": "Learn to style pages with CSS."
+        },
+        {
+          "lessonId": "5f4d4396-7730-40aa-af48-f8478e73601c",
+          "title": "JavaScript Intro",
+          "content": "Make your web pages interactive."
+        }
+      ]
+    }
+  ]
+  
