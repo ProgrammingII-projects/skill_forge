@@ -1,8 +1,12 @@
 package view;
 
 import javax.swing.*;
-import model.*;
-import controller.*;
+import model.Course;
+import model.Lesson;
+import model.User;
+import model.database_manager.CourseModel;
+import model.database_manager.UserModel;
+import controller.StudentController;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

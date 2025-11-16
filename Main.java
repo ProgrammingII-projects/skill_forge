@@ -1,7 +1,7 @@
 import javax.swing.SwingUtilities;
 import view.LoginFrame;
-import model.UserModel;
-import model.CourseModel;
+import model.database_manager.UserModel;
+import model.database_manager.CourseModel;
 
 public class Main {
     public static void main(String[] args) {

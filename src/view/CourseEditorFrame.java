@@ -1,7 +1,8 @@
-package src.view;
+package view;
 
 import controller.*;
 import model.*;
+import model.database_manager.CourseModel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

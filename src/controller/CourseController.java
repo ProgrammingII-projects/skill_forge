@@ -1,6 +1,7 @@
-package src.controller;
+package controller;
 
 import model.*;
+import model.database_manager.CourseModel;
 
 import java.util.List;
 import java.util.Optional;
