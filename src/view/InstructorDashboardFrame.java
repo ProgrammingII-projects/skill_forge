@@ -2,6 +2,8 @@ package view;
 
 import javax.swing.*;
 import model.*;
+import model.database_manager.CourseModel;
+import model.database_manager.UserModel;
 import controller.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
