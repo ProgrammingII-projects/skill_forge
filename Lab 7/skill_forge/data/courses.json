@@ -5,6 +5,7 @@
     "title": "logic",
     "courseId": "9f975e6b-605b-4411-a701-4a0656a01c55",
     "instructorId": "02d44643-bdee-4e18-8745-434445a36ea7",
+    "approveStatus": "pending",
     "lessons": [
       {
         "lessonId": "5029b250-eacf-4897-bb32-4338576b6827",
@@ -24,11 +25,12 @@
     ]
   },
   {
-    "description": "quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum",
+    "description": "quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum",
     "students": ["4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"],
     "title": "modern",
     "courseId": "b42a8d99-d758-4808-810d-8d1ad3396ce6",
     "instructorId": "02d44643-bdee-4e18-8745-434445a36ea7",
+    "approveStatus": "pending",
     "lessons": [
       {
         "lessonId": "65559d90-6ec6-437a-863a-0a8fd89bc8e9",
@@ -51,6 +53,7 @@
     "title": "Programming Basics",
     "courseId": "f1a4d8df-91cd-4d5c-9f8d-dbb1c0cc5c1a",
     "instructorId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
+    "approveStatus": "pending",
     "lessons": [
       {
         "lessonId": "8d8b07ab-3428-4d95-8a77-1f6576f497ed",
@@ -70,6 +73,7 @@
     "title": "Web Development",
     "courseId": "d54c1b82-7cc3-4c4b-88b3-38fe1c2a0671",
     "instructorId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
+    "approveStatus": "pending",
     "lessons": [
       {
         "lessonId": "c0a7b418-4f58-4e06-876d-0ddc589a4b02",
