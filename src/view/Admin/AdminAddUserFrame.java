@@ -1,8 +1,10 @@
 package view.Admin;
 
+import controller.AdminController;
 import controller.AuthController;
 import controller.CourseController;
 import controller.StudentController;
+import model.User;
 import controller.LessonController;
 import javax.swing.*;
 import java.awt.*;
@@ -14,10 +16,13 @@ import java.awt.event.ActionListener;
  * Only interacts with Controllers, not DAOs or Services directly
  */
 public class AdminAddUserFrame extends JFrame {
+
+    private User user;
     private AuthController authController;
     private CourseController courseController;
     private StudentController studentController;
     private LessonController lessonController;
+    private AdminController adminController;
     private JTextField usernameField;
     private JTextField emailField;
     private JPasswordField passwordField;
@@ -25,11 +30,13 @@ public class AdminAddUserFrame extends JFrame {
     private JButton signupButton;
     private JButton cancelButton;
 
-    public AdminAddUserFrame(AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController) {
+    public AdminAddUserFrame(User user, AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController, AdminController adminController) {
+        this.user = user;
         this.authController = authController;
         this.courseController = courseController;
         this.studentController = studentController;
         this.lessonController = lessonController;
+        this.adminController = adminController;
         
         setTitle("Add User");
         setSize(420, 300);
@@ -112,8 +119,8 @@ public class AdminAddUserFrame extends JFrame {
             JOptionPane.showMessageDialog(this, "User Added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             
             dispose();
-            ManageUsersFrame manageUsersFrame = new ManageUsersFrame(authController, courseController, studentController, lessonController);
-            manageUsersFrame.setVisible(true);
+            AdminDashboardFrame AdminDashboardFrame = new AdminDashboardFrame(user,authController, courseController, studentController, lessonController, adminController);
+            AdminDashboardFrame.setVisible(true);
         
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "user creating Failed", JOptionPane.ERROR_MESSAGE);

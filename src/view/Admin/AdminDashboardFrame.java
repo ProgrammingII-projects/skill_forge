@@ -33,16 +33,15 @@ public class AdminDashboardFrame extends JFrame {
     private JButton manageLessonsButton;
     private List<Course> courses;
 
-    public AdminDashboardFrame(//User u, AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController, AdminController adminController
-    ) {
-        //this.user = u;
+    public AdminDashboardFrame(User u, AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController, AdminController adminController) {
+        this.user = u;
         this.authController = authController;
         this.courseController = courseController;
         this.studentController = studentController;
         this.lessonController = lessonController;
         this.adminController = adminController;
         
-        setTitle("Admin - " //+ u.getUsername()
+        setTitle("Admin - " + u.getUsername()
         );
         setSize(700, 400);
         setLocationRelativeTo(null);
@@ -70,43 +69,11 @@ public class AdminDashboardFrame extends JFrame {
         CmanageButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //manageCourses();
+                manageCourses();
             }
         });
         add(CmanageButton);
 
-        
-        /* 
-        manageLessonsButton = new JButton("manageLessons");
-        manageLessonsButton.setBounds(490, 145, 180, 35);
-        manageLessonsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                manageLessons();
-            }
-        });
-        add(manageLessonsButton);
-        
-        deleteButton = new JButton("Veiw Course");
-        deleteButton.setBounds(490, 190, 180, 35);
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                deleteCourse();
-            }
-        });
-        add(deleteButton);
-        
-        JButton viewStudentsButton = new JButton("View Enrolled Students");
-        viewStudentsButton.setBounds(490, 235, 180, 35);
-        viewStudentsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                viewEnrolledStudents();
-            }
-        });
-        add(viewStudentsButton);
-        */
         
         JButton logoutButton = new JButton("Logout");
         logoutButton.setBounds(50, 300, 600, 35);
@@ -121,17 +88,25 @@ public class AdminDashboardFrame extends JFrame {
     }
 
     
+
     private void manageUsers() {
         dispose();
-        ManageUsersFrame manageUsersFrame = new ManageUsersFrame(authController, courseController, studentController, lessonController);
-            manageUsersFrame.setVisible(true);
+        AdminAddUserFrame AdminAddUserFrame = new AdminAddUserFrame( user,  authController,  courseController,  studentController,  lessonController,  adminController);
+        AdminAddUserFrame.setVisible(true);
+    
+    }
+
+    private void manageCourses() {
+        dispose();
+        ManageCoursesFrame manageUsersFrame = new ManageCoursesFrame( user,  authController,  courseController,  studentController,  lessonController,  adminController);
+         manageUsersFrame.setVisible(true);
     
     }
 
 
     private void logout() {
         dispose();
-        LoginFrame loginFrame = new LoginFrame(authController, courseController, studentController, lessonController);
+        LoginFrame loginFrame = new LoginFrame(authController, courseController, studentController, lessonController, adminController);
         loginFrame.setVisible(true);
     }
 }

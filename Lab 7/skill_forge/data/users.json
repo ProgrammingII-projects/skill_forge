@@ -33,9 +33,7 @@
       "d54c1b82-7cc3-4c4b-88b3-38fe1c2a0671"
     ],
     "progress": {
-      "f1a4d8df-91cd-4d5c-9f8d-dbb1c0cc5c1a": [
-        "8d8b07ab-3428-4d95-8a77-1f6576f497ed"
-      ],
+      "f1a4d8df-91cd-4d5c-9f8d-dbb1c0cc5c1a": ["8d8b07ab-3428-4d95-8a77-1f6576f497ed"],
       "d54c1b82-7cc3-4c4b-88b3-38fe1c2a0671": [
         "c0a7b418-4f58-4e06-876d-0ddc589a4b02",
         "9aca9840-8969-4332-9644-d3b6fba014e1"
@@ -48,12 +46,8 @@
   },
   {
     "role": "student",
-    "enrolledCourses": [
-      "f1a4d8df-91cd-4d5c-9f8d-dbb1c0cc5c1a"
-    ],
-    "progress": {
-      "f1a4d8df-91cd-4d5c-9f8d-dbb1c0cc5c1a": []
-    },
+    "enrolledCourses": ["f1a4d8df-91cd-4d5c-9f8d-dbb1c0cc5c1a"],
+    "progress": {"f1a4d8df-91cd-4d5c-9f8d-dbb1c0cc5c1a": []},
     "userId": "0fe30a4d-79d6-4200-9c2e-f9617b835df5",
     "email": "student2@example.com",
     "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
@@ -67,6 +61,23 @@
     "email": "instructor1@example.com",
     "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
     "username": "Dr. Hamilton"
+  },
+  {
+    "role": "admin",
+    "enrolledCourses": [],
+    "progress": {},
+    "userId": "1eaa1c10-1ea4-401a-b15e-52a6aefba3f2",
+    "email": "a@g.com",
+    "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+    "username": "admin"
+  },
+  {
+    "role": "admin",
+    "enrolledCourses": [],
+    "progress": {},
+    "userId": "988c645b-cf6a-4d6e-ac36-610732dd9b46",
+    "email": "zgebro1610@gmail.com",
+    "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+    "username": "Gebril"
   }
 ]
-
