@@ -13,14 +13,17 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    public void approveCourse(Course c) {
-        adminService.approveCourse(c);
+
+    //approve statues
+    public void approveCourse(String CourseID) {
+        adminService.approveCourse(CourseID);
     }
 
-    public void disapproveCourse(Course c) {
-        adminService.disapproveCourse(c);
+    public void disapproveCourse(String CourseID) {
+        adminService.disapproveCourse(CourseID);
     }
 
+    //users
     public void viewAnalytics(User s) {
         adminService.viewAnalytics(s);
     }
@@ -33,6 +36,8 @@ public class AdminController {
         adminService.removeUsers();
     }
 
+
+    //courses
     public void addCourse(Course c) {
         CourseController.addCourse(c);
     }
@@ -44,5 +49,9 @@ public class AdminController {
     public void editCourse(Course c) {
         CourseController.editCourse(c);
     }
+
+
+
+
 
 }

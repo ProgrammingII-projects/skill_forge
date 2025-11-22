@@ -5,8 +5,10 @@ import java.util.List;
 import dao.AdminDAO;
 import dao.CourseDAO;
 import dao.UserDAO;
+import dao.AdminDAO;
 import model.Course;
 import model.User;
+
 
 
 public class AdminService {
@@ -20,6 +22,14 @@ public class AdminService {
         this.adminDAO = AdminDAO;
     }
 
+    public void approveCourse(String courseID) {
+        courseDAO.updateCourseStatus(courseID ,"approved");
+    }   
+
+    public void disapproveCourse(String courseID) {
+        courseDAO.updateCourseStatus(courseID ,"disapproved");
+        
+    }   
     public List<User> getAllUsers() {
         return adminDAO.loadAll();
     }
@@ -59,9 +69,14 @@ public class AdminService {
         c.setApproveStatus("approved");
     }
 
-    public void disapproveCourse(Course c) {
-        c.setApproveStatus("disapproved");
+    public void viewAnalytics(String STudentID) {
+        
     }   
+
+    
+
+
+    
 
    
 }
