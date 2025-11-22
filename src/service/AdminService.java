@@ -64,19 +64,11 @@ public class AdminService {
                 .toList();
     }
 
-
-    public void approveCourse(Course c) {
-        c.setApproveStatus("approved");
+public void removeUser(String userId) {
+        adminDAO.deleteUser(userId);
     }
 
     public void viewAnalytics(String STudentID) {
-        
-    }   
-
-    
-
-
-    
-
-   
+        studentService.viewAnalytics(STudentID);
+    } 
 }
