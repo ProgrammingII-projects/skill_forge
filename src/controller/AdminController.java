@@ -31,6 +31,10 @@ public class AdminController {
     public List<Course>  getApprovedCourses(){
 
         return adminService.getApprovedCourses();
+/* 
+    //users
+    public void viewAnalytics(User s) {
+        adminService.viewAnalytics(s);
     }
 
     public List<Course>  getDisapprovedCourses(){
@@ -67,6 +71,7 @@ public class AdminController {
     }
 
     public List<User> getAllStudents(){
+*/
 
          return adminService.getAllStudents();
     }
