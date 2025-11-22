@@ -66,5 +66,17 @@ public class CourseDAO {
         list.removeIf(c -> c.getCourseId().equals(id));
         saveAll(list);
     }
+
+    public synchronized void updateCourseStatus (String courseId, String status){
+        List<Course> list = loadAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getCourseId().equals(courseId)) {
+                list.get(i).setApproveStatus(status);
+                saveAll(list);
+                return;
+            }
+        }
+    }
+
 }
 
