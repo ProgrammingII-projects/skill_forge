@@ -55,6 +55,9 @@ public class Course {
     public void setDescription(String d) {
         description = d;
     }
+    public String getApproveStatus() {
+        return approveStatus;
+    }
 
     public void setApproveStatus(String s) {
         approveStatus = s;
@@ -103,7 +106,7 @@ public class Course {
 
     public static Course fromJson(JSONObject o) {
         Course c = new Course(o.getString("courseId"), o.getString("title"), o.getString("description"),
-                o.getString("instructorId"), o.getString("approveStatus"));
+                o.getString("instructorId"), o.optString("approveStatus", "pending"));
         if (o.has("lessons")) {
             JSONArray la = o.getJSONArray("lessons");
             for (int i = 0; i < la.length(); i++)

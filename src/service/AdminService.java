@@ -1,5 +1,8 @@
 package service;
 
+import java.util.List;
+
+import dao.AdminDAO;
 import dao.CourseDAO;
 import dao.UserDAO;
 import dao.AdminDAO;
@@ -27,6 +30,44 @@ public class AdminService {
         courseDAO.updateCourseStatus(courseID ,"disapproved");
         
     }   
+    public List<User> getAllUsers() {
+        return adminDAO.loadAll();
+    }
+    public List<User> getAllStudents() {
+        return adminDAO.loadAll().stream()
+                .filter(u -> u.getRole().equals("student"))
+                .toList();
+    }
+    public List<User> getAllInstructors() {
+        return adminDAO.loadAll().stream()
+                .filter(u -> u.getRole().equals("instructor"))
+                .toList();
+    }
+    public List<User> getAllAdmins() {
+        return adminDAO.loadAll().stream()
+                .filter(u -> u.getRole().equals("admin"))
+                .toList();
+    }
+    public List<Course> getApprovedCourses() {
+        return courseDAO.loadAll().stream()
+                .filter(c -> c.getApproveStatus().equals("approved"))
+                .toList();
+    }
+    public List<Course> getDisapprovedCourses() {
+        return courseDAO.loadAll().stream()
+                .filter(c -> c.getApproveStatus().equals("disapproved"))
+                .toList();
+    }
+        public List<Course> getPendingCourses() {
+        return courseDAO.loadAll().stream()
+                .filter(c -> c.getApproveStatus().equals("pending"))
+                .toList();
+    }
+
+
+    public void approveCourse(Course c) {
+        c.setApproveStatus("approved");
+    }
 
     public void viewAnalytics(String STudentID) {
         

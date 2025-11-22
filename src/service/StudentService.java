@@ -5,6 +5,8 @@ import dao.UserDAO;
 import model.Course;
 import model.User;
 import java.util.Optional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Service layer for Student business logic (Backend Layer)
@@ -61,6 +63,12 @@ public class StudentService {
         Optional<User> opt = userDAO.findById(userId);
         if (!opt.isPresent()) throw new Exception("User not found");
         return opt.get();
+    }
+    
+    public List<Course> getApprovedCourses() {
+        return courseDAO.loadAll().stream()
+                .filter(c -> c.getApproveStatus().equals("approved"))
+                .collect(Collectors.toList());
     }
 }
 
