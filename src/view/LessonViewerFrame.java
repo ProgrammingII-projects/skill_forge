@@ -4,8 +4,7 @@ import javax.swing.*;
 import model.Course;
 import model.Lesson;
 import model.User;
-import model.database_manager.CourseModel;
-import model.database_manager.UserModel;
+import controller.CourseController;
 import controller.StudentController;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,13 +12,17 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Lesson Viewer View (Frontend Layer)
+ * Only interacts with Controllers, not DAOs or Services directly
+ */
 public class LessonViewerFrame extends JFrame {
     private String courseId;
-    private CourseModel courseModel;
+    private CourseController courseController;
     private StudentController studentController;
-    private UserModel userModel;
     private String studentId;
     private Course course;
+    private User user;
     private JList<String> lessonList;
     private DefaultListModel<String> listModel;
     private JTextArea contentArea;
@@ -27,28 +30,26 @@ public class LessonViewerFrame extends JFrame {
     private JButton markCompleteButton;
     private int currentLessonIndex = -1;
 
-    public LessonViewerFrame(String courseId, CourseModel cm, StudentController sc, String studentId) {
+    public LessonViewerFrame(String courseId, CourseController courseController, StudentController studentController, String studentId) {
         this.courseId = courseId;
-        this.courseModel = cm;
-        this.studentController = sc;
+        this.courseController = courseController;
+        this.studentController = studentController;
         this.studentId = studentId;
         
-        // Get UserModel from StudentController
         try {
-            java.lang.reflect.Field field = StudentController.class.getDeclaredField("userModel");
-            field.setAccessible(true);
-            this.userModel = (UserModel) field.get(sc);
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to access UserModel", e);
-        }
-        
-        Optional<Course> opt = courseModel.findById(courseId);
-        if (!opt.isPresent()) {
-            JOptionPane.showMessageDialog(null, "Course not found", "Error", JOptionPane.ERROR_MESSAGE);
+            Optional<Course> opt = courseController.findById(courseId);
+            if (!opt.isPresent()) {
+                JOptionPane.showMessageDialog(null, "Course not found", "Error", JOptionPane.ERROR_MESSAGE);
+                dispose();
+                return;
+            }
+            this.course = opt.get();
+            this.user = studentController.getUserById(studentId);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             dispose();
             return;
         }
-        this.course = opt.get();
         
         setTitle("Lesson Viewer - " + course.getTitle());
         setSize(600, 420);
@@ -105,21 +106,23 @@ public class LessonViewerFrame extends JFrame {
     }
     
     private void refreshLessonList() {
-        course = courseModel.findById(courseId).get();
+        try {
+            Optional<Course> opt = courseController.findById(courseId);
+            if (opt.isPresent()) {
+                course = opt.get();
+            }
+            user = studentController.getUserById(studentId);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         listModel.clear();
-        Optional<User> userOpt = userModel.findById(studentId);
-        if (userOpt.isPresent()) {
-            User user = userOpt.get();
-            List<String> completed = user.getProgress().getOrDefault(courseId, new java.util.ArrayList<>());
-            
-            for (Lesson l : course.getLessons()) {
-                String status = completed.contains(l.getLessonId()) ? "✓ " : "";
-                listModel.addElement(status + l.getTitle());
-            }
-        } else {
-            for (Lesson l : course.getLessons()) {
-                listModel.addElement(l.getTitle());
-            }
+        List<String> completed = user.getProgress().getOrDefault(courseId, new java.util.ArrayList<>());
+        
+        for (Lesson l : course.getLessons()) {
+            String status = completed.contains(l.getLessonId()) ? "✓ " : "";
+            listModel.addElement(status + l.getTitle());
         }
     }
     
@@ -136,14 +139,13 @@ public class LessonViewerFrame extends JFrame {
     }
     
     private void updateProgress() {
-        Optional<User> userOpt = userModel.findById(studentId);
-        if (userOpt.isPresent()) {
-            User user = userOpt.get();
+        try {
+            user = studentController.getUserById(studentId);
             List<String> completed = user.getProgress().getOrDefault(courseId, new java.util.ArrayList<>());
             int total = course.getLessons().size();
             int done = completed.size();
             progressLabel.setText("Progress: " + done + "/" + total + " lessons completed");
-        } else {
+        } catch (Exception ex) {
             progressLabel.setText("Progress: Unknown");
         }
     }

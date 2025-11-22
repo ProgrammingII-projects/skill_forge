@@ -2,8 +2,6 @@ package view;
 
 import javax.swing.*;
 import model.*;
-import model.database_manager.CourseModel;
-import model.database_manager.UserModel;
 import controller.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,24 +9,28 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Student Dashboard View (Frontend Layer)
+ * Only interacts with Controllers, not DAOs or Services directly
+ */
 public class StudentDashboardFrame extends JFrame {
     private User user;
-    private UserModel userModel;
-    private CourseModel courseModel;
     private CourseController courseController;
     private StudentController studentController;
+    private LessonController lessonController;
+    private AuthController authController;
     private JList<String> courseList;
     private DefaultListModel<String> listModel;
     private JButton enrollButton;
     private JButton viewButton;
     private List<Course> allCourses;
 
-    public StudentDashboardFrame(User u, UserModel um, CourseModel cm) {
+    public StudentDashboardFrame(User u, AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController) {
         this.user = u;
-        this.userModel = um;
-        this.courseModel = cm;
-        this.courseController = new CourseController(courseModel);
-        this.studentController = new StudentController(userModel, courseModel);
+        this.authController = authController;
+        this.courseController = courseController;
+        this.studentController = studentController;
+        this.lessonController = lessonController;
         
         setTitle("Student - " + u.getUsername());
         setSize(700, 400);
@@ -111,8 +113,12 @@ public class StudentDashboardFrame extends JFrame {
     }
     
     private String getInstructorName(String instructorId) {
-        Optional<User> opt = userModel.findById(instructorId);
-        return opt.isPresent() ? opt.get().getUsername() : "Unknown";
+        try {
+            User instructor = studentController.getUserById(instructorId);
+            return instructor.getUsername();
+        } catch (Exception ex) {
+            return "Unknown";
+        }
     }
     
     private void enrollInCourse() {
@@ -130,7 +136,7 @@ public class StudentDashboardFrame extends JFrame {
         
         try {
             studentController.enrollStudent(user.getUserId(), course.getCourseId());
-            user = userModel.findById(user.getUserId()).get();
+            user = studentController.getUserById(user.getUserId());
             refreshCourseList();
             JOptionPane.showMessageDialog(this, "Successfully enrolled in: " + course.getTitle(), "Success", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
@@ -151,12 +157,16 @@ public class StudentDashboardFrame extends JFrame {
             return;
         }
         
-        LessonViewerFrame viewer = new LessonViewerFrame(course.getCourseId(), courseModel, studentController, user.getUserId());
+        LessonViewerFrame viewer = new LessonViewerFrame(course.getCourseId(), courseController, studentController, user.getUserId());
         viewer.setVisible(true);
         viewer.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosed(java.awt.event.WindowEvent windowEvent) {
-                user = userModel.findById(user.getUserId()).get();
+                try {
+                    user = studentController.getUserById(user.getUserId());
+                } catch (Exception ex) {
+                    // Ignore
+                }
             }
         });
     }
@@ -187,7 +197,7 @@ public class StudentDashboardFrame extends JFrame {
     
     private void logout() {
         dispose();
-        LoginFrame loginFrame = new LoginFrame(userModel, courseModel);
+        LoginFrame loginFrame = new LoginFrame(authController, courseController, studentController, lessonController);
         loginFrame.setVisible(true);
     }
 }

@@ -1,18 +1,24 @@
 package view;
 
-import controller.*;
-import model.*;
-import model.database_manager.CourseModel;
+import controller.CourseController;
+import controller.LessonController;
+import model.Course;
+import model.Lesson;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.UUID;
+import java.util.Optional;
 
+/**
+ * Lesson Editor View (Frontend Layer)
+ * Only interacts with Controllers, not DAOs or Services directly
+ */
 public class LessonEditorFrame extends JFrame {
-    private model.Course course;
-    private CourseModel courseModel;
+    private Course course;
+    private CourseController courseController;
     private LessonController lessonController;
     private JList<String> lessonList;
     private DefaultListModel<String> listModel;
@@ -20,10 +26,10 @@ public class LessonEditorFrame extends JFrame {
     private JButton editButton;
     private JButton deleteButton;
 
-    public LessonEditorFrame(model.Course course, CourseModel cm) {
+    public LessonEditorFrame(Course course, CourseController courseController, LessonController lessonController) {
         this.course = course;
-        this.courseModel = cm;
-        this.lessonController = new LessonController(courseModel);
+        this.courseController = courseController;
+        this.lessonController = lessonController;
         
         setTitle("Lessons - " + course.getTitle());
         setSize(600, 420);
@@ -77,9 +83,12 @@ public class LessonEditorFrame extends JFrame {
     }
     
     private void refreshLessonList() {
-        course = courseModel.findById(course.getCourseId()).get();
+        Optional<Course> opt = courseController.findById(course.getCourseId());
+        if (opt.isPresent()) {
+            course = opt.get();
+        }
         listModel.clear();
-        for (model.Lesson l : course.getLessons()) {
+        for (Lesson l : course.getLessons()) {
             listModel.addElement(l.getTitle());
         }
     }
@@ -93,7 +102,7 @@ public class LessonEditorFrame extends JFrame {
         
         try {
             String lessonId = UUID.randomUUID().toString();
-            model.Lesson lesson = new model.Lesson(lessonId, title.trim(), content.trim());
+            Lesson lesson = new Lesson(lessonId, title.trim(), content.trim());
             lessonController.addLesson(course.getCourseId(), lesson);
             refreshLessonList();
         } catch (Exception ex) {
@@ -108,7 +117,7 @@ public class LessonEditorFrame extends JFrame {
             return;
         }
         
-        model.Lesson lesson = course.getLessons().get(index);
+        Lesson lesson = course.getLessons().get(index);
         
         String title = JOptionPane.showInputDialog(this, "Enter lesson title:", lesson.getTitle(), JOptionPane.PLAIN_MESSAGE);
         if (title == null || title.trim().isEmpty()) return;
@@ -117,7 +126,7 @@ public class LessonEditorFrame extends JFrame {
         if (content == null) return;
         
         try {
-            model.Lesson updated = new model.Lesson(lesson.getLessonId(), title.trim(), content.trim());
+            Lesson updated = new Lesson(lesson.getLessonId(), title.trim(), content.trim());
             lessonController.editLesson(course.getCourseId(), updated);
             refreshLessonList();
         } catch (Exception ex) {
@@ -132,7 +141,7 @@ public class LessonEditorFrame extends JFrame {
             return;
         }
         
-        model.Lesson lesson = course.getLessons().get(index);
+        Lesson lesson = course.getLessons().get(index);
         int confirm = JOptionPane.showConfirmDialog(this, 
             "Are you sure you want to delete: " + lesson.getTitle() + "?", 
             "Confirm Delete", JOptionPane.YES_NO_OPTION);

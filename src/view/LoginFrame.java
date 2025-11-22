@@ -1,25 +1,34 @@
 package view;
 
-import model.*;
-import model.database_manager.CourseModel;
-import model.database_manager.UserModel;
-import controller.*;
+import model.User;
+import controller.AuthController;
+import controller.CourseController;
+import controller.StudentController;
+import controller.LessonController;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Login View (Frontend Layer)
+ * Only interacts with Controllers, not DAOs or Services directly
+ */
 public class LoginFrame extends JFrame {
-    private UserModel userModel;
-    private CourseModel courseModel;
+    private AuthController authController;
+    private CourseController courseController;
+    private StudentController studentController;
+    private LessonController lessonController;
     private JTextField emailField;
     private JPasswordField passwordField;
     private JButton loginButton;
     private JButton signupButton;
 
-    public LoginFrame(UserModel userModel, CourseModel courseModel) {
-        this.userModel = userModel;
-        this.courseModel = courseModel;
+    public LoginFrame(AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController) {
+        this.authController = authController;
+        this.courseController = courseController;
+        this.studentController = studentController;
+        this.lessonController = lessonController;
         
         setTitle("Login");
         setSize(400, 220);
@@ -79,15 +88,14 @@ public class LoginFrame extends JFrame {
         }
         
         try {
-            AuthController authController = new AuthController(userModel);
             User user = authController.login(email, password);
             
             dispose();
             
             if ("instructor".equalsIgnoreCase(user.getRole())) {
-                new InstructorDashboardFrame(user, userModel, courseModel).setVisible(true);
+                new InstructorDashboardFrame(user, authController, courseController, studentController, lessonController).setVisible(true);
             } else {
-                new StudentDashboardFrame(user, userModel, courseModel).setVisible(true);
+                new StudentDashboardFrame(user, authController, courseController, studentController, lessonController).setVisible(true);
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Login Failed", JOptionPane.ERROR_MESSAGE);
@@ -95,7 +103,7 @@ public class LoginFrame extends JFrame {
     }
     
     private void openSignup() {
-        SignupFrame signupFrame = new SignupFrame(userModel, courseModel);
+        SignupFrame signupFrame = new SignupFrame(authController, courseController, studentController, lessonController);
         signupFrame.setVisible(true);
     }
 }

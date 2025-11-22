@@ -1,17 +1,23 @@
 package view;
 
-import model.*;
-import model.database_manager.CourseModel;
-import model.database_manager.UserModel;
-import controller.*;
+import controller.AuthController;
+import controller.CourseController;
+import controller.StudentController;
+import controller.LessonController;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Signup View (Frontend Layer)
+ * Only interacts with Controllers, not DAOs or Services directly
+ */
 public class SignupFrame extends JFrame {
-    private UserModel userModel;
-    private CourseModel courseModel;
+    private AuthController authController;
+    private CourseController courseController;
+    private StudentController studentController;
+    private LessonController lessonController;
     private JTextField usernameField;
     private JTextField emailField;
     private JPasswordField passwordField;
@@ -19,9 +25,11 @@ public class SignupFrame extends JFrame {
     private JButton signupButton;
     private JButton cancelButton;
 
-    public SignupFrame(UserModel userModel, CourseModel courseModel) {
-        this.userModel = userModel;
-        this.courseModel = courseModel;
+    public SignupFrame(AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController) {
+        this.authController = authController;
+        this.courseController = courseController;
+        this.studentController = studentController;
+        this.lessonController = lessonController;
         
         setTitle("Signup");
         setSize(420, 300);
@@ -99,13 +107,12 @@ public class SignupFrame extends JFrame {
         }
         
         try {
-            AuthController authController = new AuthController(userModel);
             authController.signup(username, email, password, role);
             
             JOptionPane.showMessageDialog(this, "Account created successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             dispose();
             
-            LoginFrame loginFrame = new LoginFrame(userModel, courseModel);
+            LoginFrame loginFrame = new LoginFrame(authController, courseController, studentController, lessonController);
             loginFrame.setVisible(true);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Signup Failed", JOptionPane.ERROR_MESSAGE);

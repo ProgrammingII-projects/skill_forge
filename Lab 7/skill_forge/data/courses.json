@@ -24,7 +24,7 @@
     ]
   },
   {
-    "description": "quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum",
+    "description": "quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum",
     "students": ["4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"],
     "title": "modern",
     "courseId": "b42a8d99-d758-4808-810d-8d1ad3396ce6",
@@ -42,53 +42,50 @@
       }
     ]
   },
-    {
-      "description": "Learn variables, functions, control flow, and data structures.",
-      "students": [
-        "e52cf2ec-62e2-4d57-b3bc-47080d1f1450",
-        "0fe30a4d-79d6-4200-9c2e-f9617b835df5"
-      ],
-      "title": "Programming Basics",
-      "courseId": "f1a4d8df-91cd-4d5c-9f8d-dbb1c0cc5c1a",
-      "instructorId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
-      "lessons": [
-        {
-          "lessonId": "8d8b07ab-3428-4d95-8a77-1f6576f497ed",
-          "title": "Variables & Types",
-          "content": "Introduction to data types and variables."
-        },
-        {
-          "lessonId": "fc0d5f19-f3f8-4aae-9e89-4dc1b32e682b",
-          "title": "Control Flow",
-          "content": "If-else, loops, and logic structures."
-        }
-      ]
-    },
-    {
-      "description": "Learn fundamentals of web development: HTML, CSS, JavaScript.",
-      "students": [
-        "e52cf2ec-62e2-4d57-b3bc-47080d1f1450"
-      ],
-      "title": "Web Development",
-      "courseId": "d54c1b82-7cc3-4c4b-88b3-38fe1c2a0671",
-      "instructorId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
-      "lessons": [
-        {
-          "lessonId": "c0a7b418-4f58-4e06-876d-0ddc589a4b02",
-          "title": "HTML Basics",
-          "content": "Structure web pages using HTML."
-        },
-        {
-          "lessonId": "9aca9840-8969-4332-9644-d3b6fba014e1",
-          "title": "CSS Fundamentals",
-          "content": "Learn to style pages with CSS."
-        },
-        {
-          "lessonId": "5f4d4396-7730-40aa-af48-f8478e73601c",
-          "title": "JavaScript Intro",
-          "content": "Make your web pages interactive."
-        }
-      ]
-    }
-  ]
-  
+  {
+    "description": "Learn variables, functions, control flow, and data structures.",
+    "students": [
+      "e52cf2ec-62e2-4d57-b3bc-47080d1f1450",
+      "0fe30a4d-79d6-4200-9c2e-f9617b835df5"
+    ],
+    "title": "Programming Basics",
+    "courseId": "f1a4d8df-91cd-4d5c-9f8d-dbb1c0cc5c1a",
+    "instructorId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
+    "lessons": [
+      {
+        "lessonId": "8d8b07ab-3428-4d95-8a77-1f6576f497ed",
+        "title": "Variables & Types",
+        "content": "Introduction to data types and variables."
+      },
+      {
+        "lessonId": "fc0d5f19-f3f8-4aae-9e89-4dc1b32e682b",
+        "title": "Control Flow",
+        "content": "If-else, loops, and logic structures."
+      }
+    ]
+  },
+  {
+    "description": "Learn fundamentals of web development: HTML, CSS, JavaScript.",
+    "students": ["e52cf2ec-62e2-4d57-b3bc-47080d1f1450"],
+    "title": "Web Development",
+    "courseId": "d54c1b82-7cc3-4c4b-88b3-38fe1c2a0671",
+    "instructorId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
+    "lessons": [
+      {
+        "lessonId": "c0a7b418-4f58-4e06-876d-0ddc589a4b02",
+        "title": "HTML Basics",
+        "content": "Structure web pages using HTML."
+      },
+      {
+        "lessonId": "9aca9840-8969-4332-9644-d3b6fba014e1",
+        "title": "CSS Fundamentals",
+        "content": "Learn to style pages with CSS."
+      },
+      {
+        "lessonId": "5f4d4396-7730-40aa-af48-f8478e73601c",
+        "title": "JavaScript Intro",
+        "content": "Make your web pages interactive."
+      }
+    ]
+  }
+]

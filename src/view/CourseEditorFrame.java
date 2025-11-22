@@ -1,27 +1,28 @@
 package view;
 
-import controller.*;
-import model.*;
-import model.database_manager.CourseModel;
+import controller.CourseController;
+import model.Course;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Course Editor View (Frontend Layer)
+ * Only interacts with Controllers, not DAOs or Services directly
+ */
 public class CourseEditorFrame extends JFrame {
     private String instructorId;
-    private CourseModel courseModel;
     private CourseController courseController;
-    private model.Course existingCourse;
+    private Course existingCourse;
     private JTextField titleField;
     private JTextArea descriptionArea;
     private JButton saveButton;
     private JButton cancelButton;
 
-    public CourseEditorFrame(String instructorId, CourseModel cm, boolean isNew, model.Course existing) {
+    public CourseEditorFrame(String instructorId, CourseController courseController, boolean isNew, Course existing) {
         this.instructorId = instructorId;
-        this.courseModel = cm;
-        this.courseController = new CourseController(courseModel);
+        this.courseController = courseController;
         this.existingCourse = existing;
         
         setTitle(isNew ? "Create Course" : "Edit Course");
