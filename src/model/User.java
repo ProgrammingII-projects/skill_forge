@@ -11,6 +11,7 @@ public class User {
     private String role;
     private List<String> enrolledCourses;
     private Map<String, List<String>> progress;
+    private List<Certificate> certificates;
 
     public User(String userId, String username, String email, String passwordHash, String role) {
         this.userId = userId;
@@ -20,6 +21,7 @@ public class User {
         this.role = role;
         this.enrolledCourses = new ArrayList<>();
         this.progress = new HashMap<>();
+        this.certificates=new ArrayList<>();
     }
 
     public String getUserId() { return userId; }
@@ -29,6 +31,7 @@ public class User {
     public String getRole() { return role; }
     public List<String> getEnrolledCourses() { return enrolledCourses; }
     public Map<String, List<String>> getProgress() { return progress; }
+    public List<Certificate> getCertificates(){ return certificates;}
 
     public void setUsername(String username) { this.username = username; }
     public void setEmail(String email) { this.email = email; }
@@ -38,6 +41,14 @@ public class User {
             enrolledCourses.add(courseId);
             progress.putIfAbsent(courseId, new ArrayList<>());
         }
+    }
+     public void earnCertificate(Certificate certificate){ {
+        if (!certificates.contains(certificate)) {
+            certificates.add(certificate);
+            
+           
+        }
+    }
     }
 
     public void markLessonCompleted(String courseId, String lessonId) {
@@ -84,4 +95,5 @@ public class User {
         }
         return u;
     }
+
 }
