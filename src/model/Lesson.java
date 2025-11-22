@@ -5,11 +5,13 @@ public class Lesson {
     private String lessonId;
     private String title;
     private String content;
+   private model.Quiz quiz;
 
-    public Lesson(String lessonId, String title, String content) {
+    public Lesson(String lessonId, String title, String content, model.Quiz quiz) {
         this.lessonId = lessonId;
         this.title = title;
         this.content = content;
+        this.quiz = quiz;
     }
 
     public String getLessonId() { return lessonId; }
@@ -21,10 +23,11 @@ public class Lesson {
         o.put("lessonId", lessonId);
         o.put("title", title);
         o.put("content", content);
+        o.put("quiz",quiz);
         return o;
     }
 
     public static Lesson fromJson(JSONObject o) {
-        return new Lesson(o.getString("lessonId"), o.getString("title"), o.getString("content"));
+        return new Lesson(o.getString("lessonId"), o.getString("title"), o.getString("content"),o.getString("quiz"));
     }
 }
