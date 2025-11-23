@@ -44,13 +44,19 @@ public class User {
             progress.putIfAbsent(courseId, new ArrayList<>());
         }
     }
-     public void earnCertificate(Certificate certificate){ {
-        if (!certificates.contains(certificate)) {
+     public void earnCertificate(Certificate certificate) {
+        if (!hasCertificateForCourse(certificate.getCourseId())) {
             certificates.add(certificate);
-            
-           
         }
     }
+    
+    public boolean hasCertificateForCourse(String courseId) {
+        for (Certificate cert : certificates) {
+            if (cert != null && courseId.equals(cert.getCourseId())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void markLessonCompleted(String courseId, String lessonId) {
@@ -72,6 +78,16 @@ public class User {
             prog.put(e.getKey(), new JSONArray(e.getValue()));
         }
         o.put("progress", prog);
+        
+        // Add certificates to JSON
+        JSONArray certArray = new JSONArray();
+        for (Certificate cert : certificates) {
+            if (cert != null) {
+                certArray.put(cert.toJson());
+            }
+        }
+        o.put("certificates", certArray);
+        
         return o;
     }
 
@@ -95,7 +111,20 @@ public class User {
                 u.getProgress().put(key, li);
             }
         }
+        
+        // Load certificates from JSON
+        if (o.has("certificates")) {
+            JSONArray certArray = o.getJSONArray("certificates");
+            for (int i = 0; i < certArray.length(); i++) {
+                try {
+                    Certificate cert = Certificate.fromJson(certArray.getJSONObject(i));
+                    u.getCertificates().add(cert);
+                } catch (Exception e) {
+                    // Skip invalid certificates
+                }
+            }
+        }
+        
         return u;
     }
-
 }

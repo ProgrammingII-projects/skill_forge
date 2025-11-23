@@ -34,6 +34,11 @@ public class CourseService {
     public List<Course> getAllCourses() {
         return courseDAO.loadAll();
     }
+    public List<Course> getApprovedCourses() {
+        return courseDAO.loadAll().stream()
+                .filter(c -> c.getApproveStatus().equals("approved"))
+                .collect(Collectors.toList());
+    }
 
     public List<Course> getCoursesByInstructor(String instructorId) {
         return courseDAO.loadAll().stream()

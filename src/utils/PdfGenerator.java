@@ -68,7 +68,8 @@ public class PdfGenerator {
 
             content.close();
 
-            String fileName = "Certificate_" + studentName.replace(" ", "_") + ".pdf";
+            String fileName = "Certificate_" + studentName.replace(" ", "_")+"_"+ courseName.replace(" ", "_") + ".pdf";
+            
             File outFile = new File(fileName);
             document.save(outFile);
 

@@ -1,6 +1,6 @@
 [
   {
-    "approveStatus": "pending",
+    "approveStatus": "disapproved",
     "description": "and or not",
     "students": ["4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"],
     "title": "logic",
@@ -111,7 +111,7 @@
     ]
   },
   {
-    "approveStatus": "pending",
+    "approveStatus": "approved",
     "description": "quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum",
     "students": ["4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"],
     "title": "modern",
@@ -181,82 +181,12 @@
     ]
   },
   {
-    "approveStatus": "pending",
-    "description": "Learn variables, functions, control flow, and data structures.",
+    "approveStatus": "disapproved",
+    "description": "Learn fundamentals of web development: HTML, CSS, JavaScript.",
     "students": [
       "e52cf2ec-62e2-4d57-b3bc-47080d1f1450",
-      "0fe30a4d-79d6-4200-9c2e-f9617b835df5"
+      "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"
     ],
-    "title": "Programming Basics",
-    "courseId": "f1a4d8df-91cd-4d5c-9f8d-dbb1c0cc5c1a",
-    "instructorId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
-    "lessons": [
-      {
-        "completedStudents": ["e52cf2ec-62e2-4d57-b3bc-47080d1f1450"],
-        "lessonId": "8d8b07ab-3428-4d95-8a77-1f6576f497ed",
-        "quizzes": [{
-          "passScorePercent": 60,
-          "maxRetries": -1,
-          "quizId": "quiz101",
-          "questions": [{
-            "questionId": "q1",
-            "options": [
-              "A storage location",
-              "A function"
-            ],
-            "text": "What is a variable?",
-            "correctAnswer": "A storage location"
-          }],
-          "title": "Variables Quiz"
-        }],
-        "title": "Variables & Types",
-        "content": "Introduction to data types and variables.",
-        "attempts": [{
-          "attemptNumber": 1,
-          "scorePercent": 100,
-          "quizId": "quiz101",
-          "selectedIndices": [0],
-          "passed": true,
-          "userId": "e52cf2ec-62e2-4d57-b3bc-47080d1f1450",
-          "attemptId": "att-004"
-        }]
-      },
-      {
-        "completedStudents": [],
-        "lessonId": "fc0d5f19-f3f8-4aae-9e89-4dc1b32e682b",
-        "quizzes": [{
-          "passScorePercent": 60,
-          "maxRetries": -1,
-          "quizId": "quiz102",
-          "questions": [{
-            "questionId": "q2",
-            "options": [
-              "Controls program flow",
-              "Stores data"
-            ],
-            "text": "What does an if-else statement do?",
-            "correctAnswer": "Controls program flow"
-          }],
-          "title": "Control Flow Quiz"
-        }],
-        "title": "Control Flow",
-        "content": "If-else, loops, and logic structures.",
-        "attempts": [{
-          "attemptNumber": 1,
-          "scorePercent": 0,
-          "quizId": "quiz102",
-          "selectedIndices": [1],
-          "passed": false,
-          "userId": "e52cf2ec-62e2-4d57-b3bc-47080d1f1450",
-          "attemptId": "b95dde09-6a88-4f6f-a829-6f2b6de5d849"
-        }]
-      }
-    ]
-  },
-  {
-    "approveStatus": "pending",
-    "description": "Learn fundamentals of web development: HTML, CSS, JavaScript.",
-    "students": ["e52cf2ec-62e2-4d57-b3bc-47080d1f1450"],
     "title": "Web Development",
     "courseId": "d54c1b82-7cc3-4c4b-88b3-38fe1c2a0671",
     "instructorId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
@@ -281,7 +211,15 @@
         }],
         "title": "HTML Basics",
         "content": "Structure web pages using HTML.",
-        "attempts": []
+        "attempts": [{
+          "attemptNumber": 1,
+          "scorePercent": 100,
+          "quizId": "quiz201",
+          "selectedIndices": [0],
+          "passed": true,
+          "userId": "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1",
+          "attemptId": "20c8afdd-ec04-4e2a-80f0-fa52354c0de1"
+        }]
       },
       {
         "completedStudents": [],
@@ -303,7 +241,15 @@
         }],
         "title": "CSS Fundamentals",
         "content": "Learn to style pages with CSS.",
-        "attempts": []
+        "attempts": [{
+          "attemptNumber": 1,
+          "scorePercent": 100,
+          "quizId": "quiz202",
+          "selectedIndices": [0],
+          "passed": true,
+          "userId": "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1",
+          "attemptId": "09e2dc2c-526b-45dd-b13f-c25b1f5ecc6f"
+        }]
       },
       {
         "completedStudents": [],
@@ -325,12 +271,31 @@
         }],
         "title": "JavaScript Intro",
         "content": "Make your web pages interactive.",
-        "attempts": []
+        "attempts": [
+          {
+            "attemptNumber": 1,
+            "scorePercent": 0,
+            "quizId": "quiz203",
+            "selectedIndices": [1],
+            "passed": false,
+            "userId": "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1",
+            "attemptId": "8ac21b5c-95fd-4f10-a6a1-203b4bce876a"
+          },
+          {
+            "attemptNumber": 2,
+            "scorePercent": 100,
+            "quizId": "quiz203",
+            "selectedIndices": [0],
+            "passed": true,
+            "userId": "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1",
+            "attemptId": "9d5db117-a8ad-4647-a404-9c828806ad15"
+          }
+        ]
       }
     ]
   },
   {
-    "approveStatus": "pending",
+    "approveStatus": "approved",
     "description": "test",
     "students": [
       "e52cf2ec-62e2-4d57-b3bc-47080d1f1450",
@@ -411,5 +376,95 @@
         "attempts": []
       }
     ]
+  },
+  {
+    "approveStatus": "approved",
+    "description": "adsfadsfa",
+    "students": ["4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"],
+    "title": "adfadfa",
+    "courseId": "c60b6037-542a-48d7-b2ed-d57cecb6800f",
+    "instructorId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
+    "lessons": [
+      {
+        "completedStudents": [],
+        "lessonId": "1e338968-6c4e-4f8a-9695-76cb98525c59",
+        "quizzes": [{
+          "passScorePercent": 60,
+          "maxRetries": 1,
+          "quizId": "7e0798b1-11ec-4039-821f-46ac2b78028f",
+          "questions": [{
+            "questionId": "31bbf47f-1433-4a30-b5a5-26d6e4c3fc9f",
+            "options": [
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
+            "text": "q1",
+            "correctAnswer": "1"
+          }],
+          "title": "test"
+        }],
+        "title": "adsfasdfasd",
+        "content": "asdfadf",
+        "attempts": [{
+          "attemptNumber": 1,
+          "scorePercent": 100,
+          "quizId": "7e0798b1-11ec-4039-821f-46ac2b78028f",
+          "selectedIndices": [0],
+          "passed": true,
+          "userId": "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1",
+          "attemptId": "1dfb3fc3-ae03-4c96-96a3-4718d0fd86cf"
+        }]
+      },
+      {
+        "completedStudents": [],
+        "lessonId": "35fb1d53-9258-4578-a296-3e1f1d864163",
+        "quizzes": [{
+          "passScorePercent": 60,
+          "maxRetries": 2,
+          "quizId": "547a6d18-0624-4211-850e-e2e02e903b6c",
+          "questions": [{
+            "questionId": "2f7243f6-cff0-44b7-9023-7abc6fd515cd",
+            "options": [
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
+            "text": "q3",
+            "correctAnswer": "1"
+          }],
+          "title": "q2"
+        }],
+        "title": "acccccc",
+        "content": "ccccc",
+        "attempts": [{
+          "attemptNumber": 1,
+          "scorePercent": 100,
+          "quizId": "547a6d18-0624-4211-850e-e2e02e903b6c",
+          "selectedIndices": [0],
+          "passed": true,
+          "userId": "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1",
+          "attemptId": "a8cb0cd0-990b-4445-9bf5-70a79b163773"
+        }]
+      }
+    ]
+  },
+  {
+    "approveStatus": "pending",
+    "description": "fsgsfdgsf",
+    "students": [],
+    "title": "fgsgsdgs",
+    "courseId": "0b74ca48-80fc-4ad7-a73a-d2d9f105205c",
+    "instructorId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
+    "lessons": [{
+      "completedStudents": [],
+      "lessonId": "c3896163-8c22-4e91-abd1-d8995cf47a8e",
+      "quizzes": [],
+      "title": "dsfa",
+      "content": "asdfa",
+      "attempts": []
+    }]
   }
 ]

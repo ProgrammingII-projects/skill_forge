@@ -100,11 +100,18 @@ public class StudentDashboardFrame extends JFrame {
     }
     
     private void refreshCourseList() {
-        allCourses = courseController.getAllCourses();
+        allCourses = courseController.getApprovedCourses();
         listModel.clear();
         for (Course c : allCourses) {
             boolean enrolled = user.getEnrolledCourses().contains(c.getCourseId());
             String status = enrolled ? "[ENROLLED] " : "";
+            
+            // Check if certificate is earned
+            String certificateMark = "";
+            if (enrolled && studentController.hasCertificateForCourse(c.getCourseId(), user.getUserId())) {
+                certificateMark = " ✓";
+            }
+            
             String progressInfo = "";
             if (enrolled) {
                 List<String> completed = user.getProgress().getOrDefault(c.getCourseId(), new java.util.ArrayList<>());
@@ -113,7 +120,7 @@ public class StudentDashboardFrame extends JFrame {
                 double percentage = total > 0 ? (done * 100.0 / total) : 0;
                 progressInfo = " - Progress: " + done + "/" + total + " (" + String.format("%.1f", percentage) + "%)";
             }
-            listModel.addElement(status + c.getTitle() + " by " + getInstructorName(c.getInstructorId()) + 
+            listModel.addElement(status +certificateMark + c.getTitle() + " by " + getInstructorName(c.getInstructorId()) + 
                 " (" + c.getLessons().size() + " lessons)" + progressInfo);
         }
     }
@@ -162,22 +169,11 @@ public class StudentDashboardFrame extends JFrame {
             JOptionPane.showMessageDialog(this, "You must enroll in this course first", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+        dispose();
         LessonViewerFrame viewer = new LessonViewerFrame(course.getCourseId(), courseController, 
-                                                      studentController, quizController, user.getUserId());
+                                                      studentController, quizController, user.getUserId(), authController, lessonController);
         viewer.setVisible(true);
-        viewer.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
-                try {
-                    user = studentController.getUserById(user.getUserId());
-                } catch (Exception ex) {
-                    // Ignore
-                }
-            }
-        });
     }
-    
     private void showMyCourses() {
         List<String> enrolledIds = user.getEnrolledCourses();
         if (enrolledIds.isEmpty()) {
@@ -194,7 +190,14 @@ public class StudentDashboardFrame extends JFrame {
                 int total = c.getLessons().size();
                 int done = completed.size();
                 double percentage = total > 0 ? (done * 100.0 / total) : 0;
-                sb.append("- ").append(c.getTitle())
+                
+                // Check if certificate is earned
+                String certificateMark = "";
+                if (studentController.hasCertificateForCourse(courseId, user.getUserId())) {
+                    certificateMark = " ✓";
+                }
+                
+                sb.append("- ").append(c.getTitle()).append(certificateMark)
                   .append(" - ").append(done).append("/").append(total)
                   .append(" lessons completed (").append(String.format("%.1f", percentage)).append("%)\n");
             }

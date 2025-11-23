@@ -6,7 +6,9 @@ import model.Lesson;
 import model.Quiz;
 import model.User;
 import utils.PdfGenerator;
+import controller.AuthController;
 import controller.CourseController;
+import controller.LessonController;
 import controller.StudentController;
 import controller.QuizController;
 import java.awt.*;
@@ -31,16 +33,19 @@ public class LessonViewerFrame extends JFrame {
     private JButton takeQuizButton;
     private JButton earnCertificateButton;
     private int currentLessonIndex = -1;
+    private AuthController authController;
+    private LessonController lessonController;
 
     public LessonViewerFrame(String courseId, CourseController courseController,
             StudentController studentController, QuizController quizController,
-            String studentId) {
+            String studentId, AuthController authController, LessonController lessonController) {
         this.courseId = courseId;
         this.courseController = courseController;
         this.studentController = studentController;
         this.quizController = quizController;
         this.studentId = studentId;
-
+        this.authController = authController;
+        this.lessonController = lessonController;
         try {
             Optional<Course> opt = courseController.findById(courseId);
             if (!opt.isPresent()) {
@@ -127,7 +132,11 @@ public class LessonViewerFrame extends JFrame {
         add(contentScroll);
         JButton backButton = new JButton("Back");
         backButton.setBounds(20, 420, 120, 30);
-        backButton.addActionListener(e -> dispose());
+        backButton.addActionListener(e ->{
+            dispose();
+            StudentDashboardFrame studentdashboardframe = new StudentDashboardFrame(user, authController, courseController, studentController, lessonController, quizController);
+         studentdashboardframe.setVisible(true);
+        });
         add(backButton);
 
         refreshLessonList();
@@ -296,18 +305,45 @@ public class LessonViewerFrame extends JFrame {
 
     public void earnCertificate() {
         try {
-            List<String> completed = user.getProgress().getOrDefault(courseId, new java.util.ArrayList<>());
-            if (completed.size() == course.getLessons().size()) {
-                String filePath = PdfGenerator.generateCertificate(user.getUsername(), course.getTitle());
+            // Check if certificate already earned
+            if (studentController.hasCertificateForCourse(courseId, studentId)) {
                 JOptionPane.showMessageDialog(this,
-                        "Congratulations! You have earned a certificate.\nSaved at: " + filePath, "Certificate Earned",
+                        "Certificate already earned for this course.",
+                        "Certificate Already Earned",
+                        JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            
+            // Check if all requirements are met
+            if (!studentController.canEarnCertificate(courseId, studentId)) {
+                JOptionPane.showMessageDialog(this, 
+                        "You must complete all lessons and pass all quizzes to earn a certificate.",
+                        "Incomplete Course", 
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            // Earn the certificate through the service
+            studentController.earnCertificate(studentId, courseId);
+            
+            // Generate PDF
+            String filePath = PdfGenerator.generateCertificate(user.getUsername(), course.getTitle());
+            JOptionPane.showMessageDialog(this,
+                    "Congratulations! You have earned a certificate.\nSaved at: " + filePath, 
+                    "Certificate Earned",
+                    JOptionPane.INFORMATION_MESSAGE);
+            
+            // Update button state
+            updateCertificateButtonState();
+        } catch (Exception ex) {
+            if (ex.getMessage() != null && ex.getMessage().contains("already earned")) {
+                JOptionPane.showMessageDialog(this,
+                        "Certificate already earned for this course.",
+                        "Certificate Already Earned",
                         JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "You must complete all lessons to earn a certificate.",
-                        "Incomplete Course", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

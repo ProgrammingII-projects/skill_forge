@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import dao.AdminDAO;
 import dao.CourseDAO;
@@ -41,37 +42,37 @@ public class AdminService {
     public List<User> getAllStudents() {
         return adminDAO.loadAll().stream()
                 .filter(u -> u.getRole().equals("student"))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public List<User> getAllInstructors() {
         return adminDAO.loadAll().stream()
                 .filter(u -> u.getRole().equals("instructor"))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public List<User> getAllAdmins() {
         return adminDAO.loadAll().stream()
                 .filter(u -> u.getRole().equals("admin"))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public List<Course> getApprovedCourses() {
         return courseDAO.loadAll().stream()
                 .filter(c -> c.getApproveStatus().equals("approved"))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public List<Course> getDisapprovedCourses() {
         return courseDAO.loadAll().stream()
-                .filter(c -> c.getApproveStatus().equals("disapproved"))
-                .toList();
+                .filter(c -> c.getApproveStatus() != null && c.getApproveStatus().equalsIgnoreCase("disapproved"))
+                .collect(java.util.stream.Collectors.toList());
     }
 
     public List<Course> getPendingCourses() {
         return courseDAO.loadAll().stream()
-                .filter(c -> c.getApproveStatus().equals("pending"))
-                .toList();
+                .filter(c -> c.getApproveStatus() != null && c.getApproveStatus().equalsIgnoreCase("pending"))
+                .collect(java.util.stream.Collectors.toList());
     }
 
    
