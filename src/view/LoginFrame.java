@@ -57,7 +57,7 @@ public class LoginFrame extends JFrame {
     // Initialize Controller Layer (Presentation Logic - Bridge between Frontend and Backend)
     private AuthController authController = new AuthController(authService);
     private CourseController courseController = new CourseController(courseService);
-    private StudentController studentController = new StudentController(studentService);
+    private StudentController studentController = new StudentController(studentService, quizService);
     private LessonController lessonController = new LessonController(lessonService);
     private AdminController adminController = new AdminController(adminService);
     private QuizController quizController = new QuizController(quizService);

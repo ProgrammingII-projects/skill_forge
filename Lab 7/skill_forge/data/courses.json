@@ -87,7 +87,26 @@
         }],
         "title": "key map",
         "content": "how to key map",
-        "attempts": []
+        "attempts": [
+          {
+            "attemptNumber": 1,
+            "scorePercent": 0,
+            "quizId": "q125",
+            "selectedIndices": [1],
+            "passed": false,
+            "userId": "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1",
+            "attemptId": "9c28f9e1-b4ad-4b51-9109-a4cb820e6c4e"
+          },
+          {
+            "attemptNumber": 2,
+            "scorePercent": 100,
+            "quizId": "q125",
+            "selectedIndices": [0],
+            "passed": true,
+            "userId": "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1",
+            "attemptId": "ee1b7171-9c78-4d70-b585-f7707f8e160c"
+          }
+        ]
       }
     ]
   },
@@ -149,7 +168,15 @@
         }],
         "title": "relativity",
         "content": "E = MC^2",
-        "attempts": []
+        "attempts": [{
+          "attemptNumber": 1,
+          "scorePercent": 100,
+          "quizId": "q127",
+          "selectedIndices": [0],
+          "passed": true,
+          "userId": "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1",
+          "attemptId": "a19adcd6-f0e9-4527-a6a4-fced45baaaf1"
+        }]
       }
     ]
   },
@@ -305,7 +332,10 @@
   {
     "approveStatus": "pending",
     "description": "test",
-    "students": ["e52cf2ec-62e2-4d57-b3bc-47080d1f1450"],
+    "students": [
+      "e52cf2ec-62e2-4d57-b3bc-47080d1f1450",
+      "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"
+    ],
     "title": "test",
     "courseId": "6d0a5a61-9220-45e9-90dc-0a10088924c3",
     "instructorId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
@@ -345,18 +375,32 @@
         }],
         "title": "test lesson",
         "content": "dsfa",
-        "attempts": [{
-          "attemptNumber": 1,
-          "scorePercent": 100,
-          "quizId": "0ef1f2f9-fdd8-478e-81e6-6bc61e2561e2",
-          "selectedIndices": [
-            0,
-            0
-          ],
-          "passed": true,
-          "userId": "e52cf2ec-62e2-4d57-b3bc-47080d1f1450",
-          "attemptId": "e1a63b7e-cdc0-490e-a516-49055baa53e2"
-        }]
+        "attempts": [
+          {
+            "attemptNumber": 1,
+            "scorePercent": 100,
+            "quizId": "0ef1f2f9-fdd8-478e-81e6-6bc61e2561e2",
+            "selectedIndices": [
+              0,
+              0
+            ],
+            "passed": true,
+            "userId": "e52cf2ec-62e2-4d57-b3bc-47080d1f1450",
+            "attemptId": "e1a63b7e-cdc0-490e-a516-49055baa53e2"
+          },
+          {
+            "attemptNumber": 1,
+            "scorePercent": 100,
+            "quizId": "0ef1f2f9-fdd8-478e-81e6-6bc61e2561e2",
+            "selectedIndices": [
+              0,
+              0
+            ],
+            "passed": true,
+            "userId": "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1",
+            "attemptId": "9ac8050a-9e47-4562-b925-3f79234d61e1"
+          }
+        ]
       },
       {
         "completedStudents": [],
