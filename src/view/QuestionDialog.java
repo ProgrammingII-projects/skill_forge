@@ -9,10 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Reusable dialog for adding/editing quiz questions
- * Can be used from any view that needs to create or edit questions
- */
 public class QuestionDialog extends JDialog {
     private JTextField questionTextField;
     private JTextArea optionsArea;
@@ -33,7 +29,6 @@ public class QuestionDialog extends JDialog {
     }
     
     private void initializeUI() {
-        // Question Text
         JLabel questionLabel = new JLabel("Question Text:");
         questionLabel.setBounds(20, 20, 120, 25);
         add(questionLabel);
@@ -42,7 +37,6 @@ public class QuestionDialog extends JDialog {
         questionTextField.setBounds(20, 50, 450, 25);
         add(questionTextField);
         
-        // Options
         JLabel optionsLabel = new JLabel("Options (one per line):");
         optionsLabel.setBounds(20, 90, 200, 25);
         add(optionsLabel);
@@ -54,7 +48,6 @@ public class QuestionDialog extends JDialog {
         optionsScroll.setBounds(20, 120, 450, 150);
         add(optionsScroll);
         
-        // Correct Answer
         JLabel correctLabel = new JLabel("Correct Answer:");
         correctLabel.setBounds(20, 280, 120, 25);
         add(correctLabel);
@@ -63,7 +56,6 @@ public class QuestionDialog extends JDialog {
         correctAnswerCombo.setBounds(150, 280, 200, 25);
         add(correctAnswerCombo);
         
-        // Buttons
         JButton saveButton = new JButton("Save");
         saveButton.setBounds(200, 320, 100, 30);
         saveButton.addActionListener(new ActionListener() {
@@ -84,7 +76,6 @@ public class QuestionDialog extends JDialog {
         });
         add(cancelButton);
         
-        // Add listener to update combo box when options change
         optionsArea.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
             @Override
             public void insertUpdate(javax.swing.event.DocumentEvent e) {
@@ -135,7 +126,6 @@ public class QuestionDialog extends JDialog {
             correctAnswerCombo.addItem(option);
         }
         
-        // Restore selection if it still exists
         if (currentSelection != null && options.contains(currentSelection)) {
             correctAnswerCombo.setSelectedItem(currentSelection);
         } else if (options.size() > 0) {
@@ -164,7 +154,6 @@ public class QuestionDialog extends JDialog {
             return;
         }
         
-        // Ensure combo box is updated
         updateCorrectAnswerOptions();
         
         if (correctAnswerCombo.getItemCount() == 0) {
@@ -184,17 +173,10 @@ public class QuestionDialog extends JDialog {
         dispose();
     }
     
-    /**
-     * Returns true if the dialog was saved (not cancelled)
-     */
     public boolean isSaved() {
         return saved;
     }
     
-    /**
-     * Returns the question created/edited in the dialog
-     * Only valid if isSaved() returns true
-     */
     public Question getQuestion() {
         return question;
     }

@@ -14,10 +14,6 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Lesson Viewer View (Frontend Layer)
- * Only interacts with Controllers, not DAOs or Services directly
- */
 public class LessonViewerFrame extends JFrame {
     private String courseId;
     private CourseController courseController;
@@ -156,19 +152,16 @@ public class LessonViewerFrame extends JFrame {
         Lesson lesson = course.getLessons().get(index);
         contentArea.setText(lesson.getContent());
         
-        // Check if lesson has a quiz
         try {
             Quiz quiz = quizController.getQuizForLesson(courseId, lesson.getLessonId());
             if (quiz != null) {
                 takeQuizButton.setEnabled(true);
                 takeQuizButton.setText("Take Quiz");
                 
-                // Check if student has passed the quiz
                 List<model.QuizAttempt> attempts = quizController.getUserQuizAttempts(
                     courseId, lesson.getLessonId(), studentId);
                 boolean hasPassed = attempts.stream().anyMatch(a -> a.isPassed());
                 
-                // Only enable mark complete if quiz is passed or no quiz exists
                 markCompleteButton.setEnabled(hasPassed);
                 if (hasPassed) {
                     markCompleteButton.setText("Mark as Complete");
@@ -217,21 +210,19 @@ public class LessonViewerFrame extends JFrame {
                 return;
             }
             
-            // Check if student can retake
             boolean canRetake = quizController.canRetakeQuiz(courseId, lesson.getLessonId(), studentId);
             if (!canRetake) {
                 JOptionPane.showMessageDialog(this, "You have reached the maximum number of attempts for this quiz", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             
-            // Open quiz viewer
             QuizViewerFrame quizViewer = new QuizViewerFrame(courseId, lesson.getLessonId(), 
                                                              quiz, quizController, studentId);
             quizViewer.setVisible(true);
             quizViewer.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosed(java.awt.event.WindowEvent windowEvent) {
-                    showLesson(); // Refresh to update button states
+                    showLesson();
                 }
             });
         } catch (Exception ex) {
@@ -247,7 +238,6 @@ public class LessonViewerFrame extends JFrame {
         
         Lesson lesson = course.getLessons().get(currentLessonIndex);
         
-        // Check if there's a quiz and if it's passed
         try {
             Quiz quiz = quizController.getQuizForLesson(courseId, lesson.getLessonId());
             if (quiz != null) {
@@ -263,14 +253,13 @@ public class LessonViewerFrame extends JFrame {
                 }
             }
         } catch (Exception ex) {
-            // If error checking quiz, allow marking complete (no quiz case)
         }
         
         try {
             studentController.markLessonCompleted(studentId, courseId, lesson.getLessonId());
             refreshLessonList();
             updateProgress();
-            showLesson(); // Refresh button states
+            showLesson();
             JOptionPane.showMessageDialog(this, "Lesson marked as complete!", "Success", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
