@@ -132,6 +132,7 @@ public class QuizService {
         courseDAO.updateCourse(course);
     }
 
+    
     /**
      * Calculate score for a quiz attempt
      */

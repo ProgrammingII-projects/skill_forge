@@ -218,7 +218,6 @@ public class QuizEditorFrame extends JFrame {
         if (confirm == JOptionPane.YES_OPTION) {
             try {
                 quizController.removeQuizFromLesson(courseId, lessonId);
-                quizController.deleteQuiz(currentQuiz.getQuizId());
                 currentQuiz = null;
                 titleField.setText("");
                 passScoreSpinner.setValue(60.0);
