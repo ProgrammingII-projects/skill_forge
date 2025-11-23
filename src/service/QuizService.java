@@ -30,7 +30,8 @@ public class QuizService {
 
     public boolean addQuestion(String quizId, Question q) {
         Quiz quiz = quizDAO.getQuiz(quizId);
-        if (quiz == null) return false;
+        if (quiz == null)
+            return false;
 
         quiz.getQuestions().add(q);
         quizDAO.saveQuiz(quiz);
@@ -39,7 +40,8 @@ public class QuizService {
 
     public boolean removeQuestion(String quizId, String questionId) {
         Quiz quiz = quizDAO.getQuiz(quizId);
-        if (quiz == null) return false;
+        if (quiz == null)
+            return false;
 
         quiz.removeQuestion(questionId);
         quizDAO.saveQuiz(quiz);
@@ -52,7 +54,8 @@ public class QuizService {
 
     public boolean updateQuiz(Quiz updated) {
         Quiz existing = quizDAO.getQuiz(updated.getQuizId());
-        if (existing == null) return false;
+        if (existing == null)
+            return false;
 
         quizDAO.saveQuiz(updated);
         return true;
@@ -132,7 +135,6 @@ public class QuizService {
         courseDAO.updateCourse(course);
     }
 
-    
     /**
      * Calculate score for a quiz attempt
      */
@@ -197,8 +199,8 @@ public class QuizService {
     /**
      * Submit a quiz attempt
      */
-    public QuizAttempt submitQuizAttempt(String courseId, String lessonId, String userId, 
-                                         List<Integer> selectedIndices) throws Exception {
+    public QuizAttempt submitQuizAttempt(String courseId, String lessonId, String userId,
+            List<Integer> selectedIndices) throws Exception {
         // Get the quiz for the lesson
         Quiz quiz = getQuizForLesson(courseId, lessonId);
         if (quiz == null) {
@@ -224,8 +226,7 @@ public class QuizService {
                 selectedIndices,
                 scorePercent,
                 passed,
-                currentAttemptNumber
-        );
+                currentAttemptNumber);
 
         // Save attempt to lesson
         Optional<Course> courseOpt = courseDAO.findById(courseId);
@@ -327,4 +328,24 @@ public class QuizService {
         int currentAttemptNumber = getNextAttemptNumber(courseId, lessonId, userId);
         return currentAttemptNumber <= quiz.getMaxRetries();
     }
+
+    public boolean hasPassedAllQuizzes(String courseId, String userId) throws Exception {
+        Optional<Course> courseOpt = courseDAO.findById(courseId);
+        if (!courseOpt.isPresent())
+            return false;
+
+        Course course = courseOpt.get();
+
+        for (Lesson lesson : course.getLessons()) {
+            Quiz quiz = getQuizForLesson(courseId, lesson.getLessonId());
+            if (quiz != null) {
+                List<QuizAttempt> attempts = getUserQuizAttempts(courseId, lesson.getLessonId(), userId);
+                boolean passed = attempts.stream().anyMatch(QuizAttempt::isPassed);
+                if (!passed)
+                    return false;
+            }
+        }
+        return true;
+    }
+
 }

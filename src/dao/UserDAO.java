@@ -10,7 +10,7 @@ import org.json.JSONArray;
  * Data Access Object for User entity
  * Handles all database operations for users (Backend Layer)
  */
-public class UserDAO  {
+public class UserDAO {
     private Path file;
 
     public UserDAO(String filePath) {
@@ -20,7 +20,13 @@ public class UserDAO  {
                 Files.createDirectories(file.getParent());
                 Files.write(file, "[]".getBytes());
             }
-        } catch (IOException e) { throw new RuntimeException(e); }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public User getUser(String id) {
+        return findById(id).orElse(null);
     }
 
     public synchronized List<User> loadAll() {
@@ -28,20 +34,29 @@ public class UserDAO  {
             String s = new String(Files.readAllBytes(file));
             JSONArray arr = new JSONArray(s);
             List<User> list = new ArrayList<>();
-            for (int i = 0; i < arr.length(); i++) list.add(User.fromJson(arr.getJSONObject(i)));
+            for (int i = 0; i < arr.length(); i++)
+                list.add(User.fromJson(arr.getJSONObject(i)));
             return list;
-        } catch (IOException e) { throw new RuntimeException(e); }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public synchronized void saveAll(List<User> users) {
         JSONArray arr = new JSONArray();
-        for (User u : users) arr.put(u.toJson());
-        try { Files.write(file, arr.toString(2).getBytes()); }
-        catch (IOException e) { throw new RuntimeException(e); }
+        for (User u : users)
+            arr.put(u.toJson());
+        try {
+            Files.write(file, arr.toString(2).getBytes());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public synchronized void addUser(User u) {
-        List<User> list = loadAll(); list.add(u); saveAll(list);
+        List<User> list = loadAll();
+        list.add(u);
+        saveAll(list);
     }
 
     public synchronized Optional<User> findByEmail(String email) {
@@ -65,4 +80,3 @@ public class UserDAO  {
         saveAll(list);
     }
 }
-
