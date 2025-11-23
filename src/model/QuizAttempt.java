@@ -13,18 +13,16 @@ public class QuizAttempt {
     private List<Integer> selectedIndices; // -1 for unanswered
     private double scorePercent;
     private boolean passed;
-    private long timestamp;
     private int attemptNumber; // 1-based per-user attempt count for that quiz
 
     public QuizAttempt(String attemptId, String quizId, String userId, List<Integer> selectedIndices,
-                       double scorePercent, boolean passed, long timestamp, int attemptNumber) {
+                       double scorePercent, boolean passed, int attemptNumber) {
         this.attemptId = attemptId;
         this.quizId = quizId;
         this.userId = userId;
         this.selectedIndices = new ArrayList<>(selectedIndices);
         this.scorePercent = scorePercent;
         this.passed = passed;
-        this.timestamp = timestamp;
         this.attemptNumber = attemptNumber;
     }
 
@@ -34,7 +32,6 @@ public class QuizAttempt {
     public List<Integer> getSelectedIndices() { return selectedIndices; }
     public double getScorePercent() { return scorePercent; }
     public boolean isPassed() { return passed; }
-    public long getTimestamp() { return timestamp; }
     public int getAttemptNumber() { return attemptNumber; }
 
     public JSONObject toJson() {
@@ -45,7 +42,6 @@ public class QuizAttempt {
         o.put("selectedIndices", new JSONArray(selectedIndices));
         o.put("scorePercent", scorePercent);
         o.put("passed", passed);
-        o.put("timestamp", timestamp);
         o.put("attemptNumber", attemptNumber);
         return o;
     }
@@ -63,7 +59,6 @@ public class QuizAttempt {
             sel,
             o.optDouble("scorePercent", 0.0),
             o.optBoolean("passed", false),
-            o.optLong("timestamp", System.currentTimeMillis()),
             o.optInt("attemptNumber", 1)
         );
     }
