@@ -214,7 +214,15 @@
         }],
         "title": "Control Flow",
         "content": "If-else, loops, and logic structures.",
-        "attempts": []
+        "attempts": [{
+          "attemptNumber": 1,
+          "scorePercent": 0,
+          "quizId": "quiz102",
+          "selectedIndices": [1],
+          "passed": false,
+          "userId": "e52cf2ec-62e2-4d57-b3bc-47080d1f1450",
+          "attemptId": "b95dde09-6a88-4f6f-a829-6f2b6de5d849"
+        }]
       }
     ]
   },
