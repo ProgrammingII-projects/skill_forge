@@ -1,101 +1,102 @@
-package view.Student;
+package view.Admin;
 
 import javax.swing.*;
-import model.Course;
-import model.Lesson;
 import model.User;
 import controller.AdminController;
+import controller.AuthController;
 import controller.CourseController;
+import controller.LessonController;
 import controller.StudentController;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.Optional;
 
 /**
- * Lesson Viewer View (Frontend Layer)
- * Only interacts with Controllers, not DAOs or Services directly
+ * Manage Users View (Admin Frontend Layer)
  */
 public class ManageUsersFrame extends JFrame {
-    private String courseId;
+    private AuthController authController;
     private CourseController courseController;
     private StudentController studentController;
+    private LessonController lessonController;
     private AdminController adminController;
-    private String studentId;
-    private Course course;
     private User user;
-    private JList<String> lessonList;
+    private JList<String> userList;
     private DefaultListModel<String> listModel;
     private JTextArea contentArea;
-    private JLabel progressLabel;
+    private JLabel infoLabel;
     private JButton addUserButton;
-    private int currentLessonIndex = -1;
+    private JButton deleteUserButton;
+    private JButton editUserButton;
+    private List<User> users;
 
-    public ManageUsersFrame(String courseId, CourseController courseController, StudentController studentController, String studentId, AdminController adminController) {
-        this.courseId = courseId;
+    public ManageUsersFrame(User user, AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController, AdminController adminController) {
+        this.user = user;
+        this.authController = authController;
         this.courseController = courseController;
         this.studentController = studentController;
+        this.lessonController = lessonController;
         this.adminController = adminController;
-        this.studentId = studentId;
-        
-        try {
-            Optional<Course> opt = courseController.findById(courseId);
-            if (!opt.isPresent()) {
-                JOptionPane.showMessageDialog(null, "Course not found", "Error", JOptionPane.ERROR_MESSAGE);
-                dispose();
-                return;
-            }
-            this.course = opt.get();
-            this.user = studentController.getUserById(studentId);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            dispose();
-            return;
-        }
-        
-        setTitle("Users Viewer - ");
+
+        setTitle("Manage Users");
         setSize(600, 420);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(null);
-        
-        JLabel titleLabel = new JLabel("Users");
+
+        JLabel titleLabel = new JLabel("Users List");
         titleLabel.setBounds(20, 20, 150, 25);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 14));
         add(titleLabel);
-        
+
         listModel = new DefaultListModel<>();
-        lessonList = new JList<>(listModel);
-        lessonList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        lessonList.addListSelectionListener(e -> {
+        userList = new JList<>(listModel);
+        userList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        userList.addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
-                showLesson();
+                showSelectedUser();
             }
         });
-        JScrollPane listScroll = new JScrollPane(lessonList);
+
+        JScrollPane listScroll = new JScrollPane(userList);
         listScroll.setBounds(20, 50, 250, 200);
         add(listScroll);
-        
-        progressLabel = new JLabel();
-        progressLabel.setBounds(20, 260, 250, 25);
-        add(progressLabel);
-        
+
+        infoLabel = new JLabel();
+        infoLabel.setBounds(20, 260, 250, 25);
+        add(infoLabel);
+
         addUserButton = new JButton("Add User");
-        addUserButton.setBounds(20, 295, 250, 30);
+        addUserButton.setBounds(20, 295, 120, 30);
         addUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                markComplete();
+                addUsers();
             }
         });
         add(addUserButton);
-        
-        JLabel contentLabel = new JLabel("Lesson Content");
-        contentLabel.setBounds(290, 20, 280, 25);
-        contentLabel.setFont(new Font("Arial", Font.BOLD, 14));
-        add(contentLabel);
-        
+
+        editUserButton = new JButton("Edit User");
+        editUserButton.setBounds(150, 295, 120, 30);
+        editUserButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                editSelectedUser();
+            }
+        });
+        add(editUserButton);
+
+        deleteUserButton = new JButton("Delete User");
+        deleteUserButton.setBounds(20, 335, 250, 30);
+        deleteUserButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deleteSelectedUser();
+            }
+        });
+        add(deleteUserButton);
+
         contentArea = new JTextArea();
         contentArea.setEditable(false);
         contentArea.setLineWrap(true);
@@ -103,70 +104,80 @@ public class ManageUsersFrame extends JFrame {
         JScrollPane contentScroll = new JScrollPane(contentArea);
         contentScroll.setBounds(290, 50, 280, 275);
         add(contentScroll);
-        
-        refreshLessonList();
-        updateProgress();
+
+        refreshUserList();
     }
-    
-    private void refreshLessonList() {
+
+    private void refreshUserList() {
         try {
-            Optional<Course> opt = .findById(courseId);
-            if (opt.isPresent()) {
-                course = opt.get();
+            users = adminController.getAllUsers();
+            listModel.clear();
+            for (User u : users) {
+                listModel.addElement(u.getUsername() + " (" + u.getRole() + ")");
             }
-            user = studentController.getUserById(studentId);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        listModel.clear();
-        List<String> completed = user.getProgress().getOrDefault(courseId, new java.util.ArrayList<>());
-        
-        for (Lesson l : course.getLessons()) {
-            String status = completed.contains(l.getLessonId()) ? "✓ " : "";
-            listModel.addElement(status + l.getTitle());
-        }
-    }
-    
-    private void showLesson() {
-        int index = lessonList.getSelectedIndex();
-        if (index < 0 || index >= course.getLessons().size()) {
             contentArea.setText("");
-            return;
-        }
-        currentLessonIndex = index;
-        Lesson lesson = course.getLessons().get(index);
-        contentArea.setText(lesson.getContent());
-        updateProgress();
-    }
-    
-    private void updateProgress() {
-        try {
-            user = studentController.getUserById(studentId);
-            List<String> completed = user.getProgress().getOrDefault(courseId, new java.util.ArrayList<>());
-            int total = course.getLessons().size();
-            int done = completed.size();
-            progressLabel.setText("Progress: " + done + "/" + total + " lessons completed");
-        } catch (Exception ex) {
-            progressLabel.setText("Progress: Unknown");
-        }
-    }
-    
-    private void markComplete() {
-        if (currentLessonIndex < 0 || currentLessonIndex >= course.getLessons().size()) {
-            JOptionPane.showMessageDialog(this, "Please select a lesson", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        Lesson lesson = course.getLessons().get(currentLessonIndex);
-        try {
-            studentController.markLessonCompleted(studentId, courseId, lesson.getLessonId());
-            refreshLessonList();
-            updateProgress();
-            JOptionPane.showMessageDialog(this, "Lesson marked as complete!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            infoLabel.setText("Total users: " + (users != null ? users.size() : 0));
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void showSelectedUser() {
+        int idx = userList.getSelectedIndex();
+        if (idx >= 0 && users != null && idx < users.size()) {
+            User u = users.get(idx);
+            StringBuilder sb = new StringBuilder();
+            sb.append("Username: ").append(u.getUsername()).append("\n");
+            sb.append("Email: ").append(u.getEmail()).append("\n");
+            sb.append("Role: ").append(u.getRole()).append("\n");
+            // add more fields if needed
+            contentArea.setText(sb.toString());
+        } else {
+            contentArea.setText("");
+        }
+    }
+
+    private void addUsers() {
+        dispose();
+        AdminAddUserFrame addUserFrame = new AdminAddUserFrame(user, authController, courseController, studentController, lessonController, adminController);
+        addUserFrame.setVisible(true);
+    }
+
+    private void editSelectedUser() {
+        int idx = userList.getSelectedIndex();
+        if (idx < 0 || users == null || idx >= users.size()) {
+            JOptionPane.showMessageDialog(this, "Please select a user to edit.", "Edit User", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        User selectedUser = users.get(idx);
+
+        // For demonstration, we'll just display editing not implemented.
+        // You'd want to pop up a dialog to change data and then update the user via adminController.
+        JOptionPane.showMessageDialog(this, "Edit user functionality not implemented.", "Edit User", JOptionPane.INFORMATION_MESSAGE);
+
+        // Example TODO:
+        // EditUserDialog dlg = new EditUserDialog(selectedUser, adminController...);
+        // dlg.setVisible(true);
+        // if (dlg.isSaved()) { refreshUserList(); }
+    }
+
+    private void deleteSelectedUser() {
+        int idx = userList.getSelectedIndex();
+        if (idx < 0 || users == null || idx >= users.size()) {
+            JOptionPane.showMessageDialog(this, "Please select a user to delete.", "Delete User", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        User selectedUser = users.get(idx);
+
+        int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete user: " + selectedUser.getUsername() + "?", "Delete User", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                adminController.removeUsers(selectedUser.getUserId());
+                JOptionPane.showMessageDialog(this, "User deleted successfully.");
+                refreshUserList();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "Failed to Delete", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 }
