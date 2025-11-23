@@ -2,13 +2,18 @@ package view.Instructor;
 
 import controller.CourseController;
 import controller.LessonController;
+import controller.QuizController;
 import model.Course;
 import model.Lesson;
+import model.Quiz;
+import model.Question;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import java.util.Optional;
 
@@ -20,19 +25,23 @@ public class LessonEditorFrame extends JFrame {
     private Course course;
     private CourseController courseController;
     private LessonController lessonController;
+    private QuizController quizController;
     private JList<String> lessonList;
     private DefaultListModel<String> listModel;
     private JButton addButton;
     private JButton editButton;
     private JButton deleteButton;
+    private JButton manageQuizButton;
 
-    public LessonEditorFrame(Course course, CourseController courseController, LessonController lessonController) {
+    public LessonEditorFrame(Course course, CourseController courseController, 
+                            LessonController lessonController, QuizController quizController) {
         this.course = course;
         this.courseController = courseController;
         this.lessonController = lessonController;
+        this.quizController = quizController;
         
         setTitle("Lessons - " + course.getTitle());
-        setSize(600, 420);
+        setSize(700, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(null);
@@ -46,7 +55,7 @@ public class LessonEditorFrame extends JFrame {
         lessonList = new JList<>(listModel);
         lessonList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         JScrollPane scrollPane = new JScrollPane(lessonList);
-        scrollPane.setBounds(20, 55, 350, 300);
+        scrollPane.setBounds(20, 55, 350, 350);
         add(scrollPane);
         
         addButton = new JButton("Add Lesson");
@@ -78,6 +87,16 @@ public class LessonEditorFrame extends JFrame {
             }
         });
         add(deleteButton);
+        
+        manageQuizButton = new JButton("Manage Quiz");
+        manageQuizButton.setBounds(390, 190, 180, 35);
+        manageQuizButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                manageQuiz();
+            }
+        });
+        add(manageQuizButton);
         
         refreshLessonList();
     }
@@ -153,5 +172,24 @@ public class LessonEditorFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
+    }
+    
+    private void manageQuiz() {
+        int index = lessonList.getSelectedIndex();
+        if (index < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a lesson", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        Lesson lesson = course.getLessons().get(index);
+        QuizEditorFrame quizEditor = new QuizEditorFrame(course.getCourseId(), lesson.getLessonId(), 
+                                                         courseController, quizController);
+        quizEditor.setVisible(true);
+        quizEditor.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                refreshLessonList();
+            }
+        });
     }
 }
