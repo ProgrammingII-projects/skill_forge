@@ -16,7 +16,15 @@ public class Certificate {
         this.studentId = studentId;
         this.courseId = courseId;
         LocalDate today=LocalDate.now();
-        this.issueDate =today.toString();
+        this.issueDate = today.toString();
+    }
+
+    public Certificate(String CertificateID , String studentId, String courseId, String date) {
+        this.certificateId = CertificateID;
+        this.studentId = studentId;
+        this.courseId = courseId;
+        LocalDate today=LocalDate.now();
+        this.issueDate = date;
     }
 
     public String getCertificateId() {
