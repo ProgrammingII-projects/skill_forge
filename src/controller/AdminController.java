@@ -32,7 +32,7 @@ public class AdminController {
 
         return adminService.getApprovedCourses();
     }
-
+ 
     public List<Course>  getDisapprovedCourses(){
 
         return adminService.getDisapprovedCourses();
@@ -69,7 +69,6 @@ public class AdminController {
 
     public List<User> getAllStudents(){
 
-
          return adminService.getAllStudents();
     }
 
@@ -86,7 +85,5 @@ public class AdminController {
         adminService.updateUser(userId, username, email, password, role);
     }
 
-   /* * public void viewAnalytics(String STudentID) {
-        studentService.viewAnalytics(STudentID);
-    } */
+ 
 }
