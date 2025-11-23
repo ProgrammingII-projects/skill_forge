@@ -204,7 +204,7 @@ public class StudentDashboardFrame extends JFrame {
     
     private void logout() {
         dispose();
-        LoginFrame loginFrame = new LoginFrame(authController, courseController, studentController, lessonController, quizController);
+        LoginFrame loginFrame = new LoginFrame();
         loginFrame.setVisible(true);
     }
 }

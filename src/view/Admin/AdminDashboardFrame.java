@@ -106,7 +106,7 @@ public class AdminDashboardFrame extends JFrame {
 
     private void logout() {
         dispose();
-        LoginFrame loginFrame = new LoginFrame(authController, courseController, studentController, lessonController, adminController);
+        LoginFrame loginFrame = new LoginFrame();
         loginFrame.setVisible(true);
     }
 }
