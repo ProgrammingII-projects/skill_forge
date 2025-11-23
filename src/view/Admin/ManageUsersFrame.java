@@ -142,7 +142,7 @@ public class ManageUsersFrame extends JFrame {
 
     private void addUsers() {
         dispose();
-        AdminAddUserFrame addUserFrame = new AdminAddUserFrame(user, authController, courseController, studentController, lessonController, adminController);
+        AdminAddUserFrame addUserFrame = new AdminAddUserFrame(user, authController, courseController, studentController, lessonController, adminController, analyticsController);
         addUserFrame.setVisible(true);
     }
 
