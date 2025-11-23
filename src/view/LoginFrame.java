@@ -9,6 +9,7 @@ import controller.AuthController;
 import controller.CourseController;
 import controller.StudentController;
 import controller.LessonController;
+import controller.QuizController;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -24,25 +25,36 @@ public class LoginFrame extends JFrame {
     private StudentController studentController;
     private LessonController lessonController;
     private AdminController adminController;
+    private QuizController quizController;
     private JTextField emailField;
     private JPasswordField passwordField;
     private JButton loginButton;
     private JButton signupButton;
 
-    public LoginFrame(AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController) {
+    public LoginFrame(AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController, QuizController quizController) {
         this.authController = authController;
         this.courseController = courseController;
         this.studentController = studentController;
         this.lessonController = lessonController;
+        this.quizController = quizController;
         veiw();
     }
-
-    public LoginFrame(AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController,  AdminController adminController ) {
+  
+    public LoginFrame(AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController,  AdminController adminController) {
         this.authController = authController;
         this.courseController = courseController;
         this.studentController = studentController;
         this.lessonController = lessonController;
         this.adminController = adminController;
+        veiw();
+    }
+    public LoginFrame(AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController,  AdminController adminController,QuizController quizController) {
+        this.authController = authController;
+        this.courseController = courseController;
+        this.studentController = studentController;
+        this.lessonController = lessonController;
+        this.adminController = adminController;
+        this.quizController = quizController;
         veiw();
     }
 
@@ -113,10 +125,11 @@ public class LoginFrame extends JFrame {
             dispose();
             
             if ("instructor".equalsIgnoreCase(user.getRole())) {
-                new InstructorDashboardFrame(user, authController, courseController, studentController, lessonController).setVisible(true);
+                new InstructorDashboardFrame(user, authController, courseController, 
+                                     studentController, lessonController, quizController).setVisible(true);
             } 
             else if("student".equalsIgnoreCase(user.getRole())) {
-                new StudentDashboardFrame(user, authController, courseController, studentController, lessonController).setVisible(true);
+                new StudentDashboardFrame(user, authController, courseController, studentController, lessonController, quizController).setVisible(true);
             }
             else {
                 new AdminDashboardFrame(user, authController, courseController, studentController, lessonController, adminController).setVisible(true);
