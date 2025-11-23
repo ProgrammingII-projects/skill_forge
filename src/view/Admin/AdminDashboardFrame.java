@@ -109,7 +109,7 @@ public class AdminDashboardFrame extends JFrame {
 
     private void manageUsers() {
         dispose();
-        ManageUsersFrame ManageUsersFrame = new  ManageUsersFrame( user,  authController,  courseController,  studentController,  lessonController, adminController,analyticsController);
+        ManageUsersFrame ManageUsersFrame = new  ManageUsersFrame( user,  authController,  courseController,  studentController,  lessonController, adminController, analyticsController);
         ManageUsersFrame.setVisible(true);
     
     }
