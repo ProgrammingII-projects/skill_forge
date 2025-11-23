@@ -34,7 +34,6 @@
             "selectedIndices": [1],
             "scorePercent": 100.0,
             "passed": true,
-            "timestamp": 1700000000000,
             "attemptNumber": 1
           }
         ],
@@ -68,7 +67,6 @@
             "selectedIndices": [1],
             "scorePercent": 100.0,
             "passed": true,
-            "timestamp": 1700000100000,
             "attemptNumber": 1
           }
         ],
@@ -137,7 +135,6 @@
             "selectedIndices": [0],
             "scorePercent": 100.0,
             "passed": true,
-            "timestamp": 1700000200000,
             "attemptNumber": 1
           }
         ],
@@ -206,7 +203,6 @@
             "selectedIndices": [0],
             "scorePercent": 100.0,
             "passed": true,
-            "timestamp": 1700000300000,
             "attemptNumber": 1
           }
         ],
