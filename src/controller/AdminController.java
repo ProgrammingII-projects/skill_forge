@@ -82,7 +82,9 @@ public class AdminController {
         
         return adminService.getAllAdmins();
     }
-    
+    public void updateUser(String userId, String username, String email, String password, String role) {
+        adminService.updateUser(userId, username, email, password, role);
+    }
 
    /* * public void viewAnalytics(String STudentID) {
         studentService.viewAnalytics(STudentID);

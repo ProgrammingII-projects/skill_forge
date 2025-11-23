@@ -1,13 +1,14 @@
 package service;
 
 import java.util.List;
+import java.util.Optional;
 
 import dao.AdminDAO;
 import dao.CourseDAO;
 import dao.UserDAO;
-import dao.AdminDAO;
 import model.Course;
 import model.User;
+import utils.HashUtil;
 
 public class AdminService {
 
@@ -80,6 +81,25 @@ public void removeUser(String userId) {
         adminDAO.deleteUser(userId);
     }
 
+    public void updateUser(String userId, String username, String email, String password, String role) {
+        Optional<User> userOpt = adminDAO.findById(userId);
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+            user.setUsername(username);
+            user.setEmail(email);
+            if (password != null && !password.isEmpty()) {
+                // Update password hash
+                String hash = HashUtil.sha256(password);
+                user.setPassword(hash);
+            }
+            if (role != null && !role.isEmpty()) {
+                user.setRole(role);
+            }
+            adminDAO.updateUser(user);
+        }
+    }
+
+    
     //public void viewAnalytics(String STudentID) {
      //   studentService.viewAnalytics(STudentID);
    // }

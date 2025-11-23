@@ -150,15 +150,9 @@ public class ManageUsersFrame extends JFrame {
             return;
         }
         User selectedUser = users.get(idx);
-
-        // For demonstration, we'll just display editing not implemented.
-        // You'd want to pop up a dialog to change data and then update the user via adminController.
-        JOptionPane.showMessageDialog(this, "Edit user functionality not implemented.", "Edit User", JOptionPane.INFORMATION_MESSAGE);
-
-        // Example TODO:
-        // EditUserDialog dlg = new EditUserDialog(selectedUser, adminController...);
-        // dlg.setVisible(true);
-        // if (dlg.isSaved()) { refreshUserList(); }
+        //JOptionPane.showMessageDialog(this, "Edit user functionality not implemented.", "Edit User", JOptionPane.INFORMATION_MESSAGE);
+        EditUserFrame EditUserFrame = new EditUserFrame( selectedUser, user,  authController,  courseController,  studentController,  lessonController, adminController, this::refreshUserList);
+        EditUserFrame.setVisible(true);
     }
 
     private void deleteSelectedUser() {
