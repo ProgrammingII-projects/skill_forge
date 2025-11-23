@@ -39,4 +39,7 @@ public class CourseController {
     public void deleteCourse(String courseId) throws Exception {
         courseService.deleteCourse(courseId);
     }
+    public List<Course> getApprovedCourses() {
+        return courseService.getApprovedCourses();
+    }
 }

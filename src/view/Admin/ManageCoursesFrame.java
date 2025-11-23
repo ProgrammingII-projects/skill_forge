@@ -1,6 +1,8 @@
 package view.Admin;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import model.User;
 import view.LoginFrame;
 import view.Instructor.CourseEditorFrame;
@@ -10,6 +12,7 @@ import controller.CourseController;
 import controller.StudentController;
 import controller.LessonController;
 import controller.AdminController;
+import controller.AnalyticsController;
 import controller.AuthController;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -28,6 +31,7 @@ public class ManageCoursesFrame extends JFrame {
     private LessonController lessonController;
     private AuthController authController;
     private AdminController adminController;
+    private AnalyticsController analyticsController;
     private JList<String> pendingCourseList;
     private JList<String> approvedCourseList;
     private JList<String> disapprovedCourseList;
@@ -41,16 +45,17 @@ public class ManageCoursesFrame extends JFrame {
     private List<Course> pendingCourses = new ArrayList<>();
     private List<Course> approvedCourses = new ArrayList<>();
     private List<Course> disapprovedCourses = new ArrayList<>();
+    private boolean isUpdatingSelection = false; // Flag to prevent recursive updates
 
     public ManageCoursesFrame(User u, AuthController authController, CourseController courseController,
-                             StudentController studentController, LessonController lessonController, AdminController adminController) {
+                             StudentController studentController, LessonController lessonController, AdminController adminController, AnalyticsController analyticsController) {
         this.user = u;
         this.authController = authController;
         this.courseController = courseController;
         this.studentController = studentController;
         this.lessonController = lessonController;
         this.adminController = adminController;
-
+        this.analyticsController = analyticsController;
         setTitle("Admin - " + u.getUsername());
         setSize(1200, 550);
         setLocationRelativeTo(null);
@@ -74,6 +79,18 @@ public class ManageCoursesFrame extends JFrame {
         pendingListModel = new DefaultListModel<>();
         pendingCourseList = new JList<>(pendingListModel);
         pendingCourseList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        // Synchronize selection - clear other lists when this one is selected
+        pendingCourseList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting() && !isUpdatingSelection) {
+                    isUpdatingSelection = true;
+                    approvedCourseList.clearSelection();
+                    disapprovedCourseList.clearSelection();
+                    isUpdatingSelection = false;
+                }
+            }
+        });
         JScrollPane pendingScrollPane = new JScrollPane(pendingCourseList);
         pendingScrollPane.setBounds(startX, startY + labelHeight + 10, tileWidth, tileHeight);
         add(pendingScrollPane);
@@ -88,6 +105,18 @@ public class ManageCoursesFrame extends JFrame {
         approvedListModel = new DefaultListModel<>();
         approvedCourseList = new JList<>(approvedListModel);
         approvedCourseList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        // Synchronize selection - clear other lists when this one is selected
+        approvedCourseList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting() && !isUpdatingSelection) {
+                    isUpdatingSelection = true;
+                    pendingCourseList.clearSelection();
+                    disapprovedCourseList.clearSelection();
+                    isUpdatingSelection = false;
+                }
+            }
+        });
         JScrollPane approvedScrollPane = new JScrollPane(approvedCourseList);
         approvedScrollPane.setBounds(centerX, startY + labelHeight + 10, tileWidth, tileHeight);
         add(approvedScrollPane);
@@ -102,6 +131,18 @@ public class ManageCoursesFrame extends JFrame {
         disapprovedListModel = new DefaultListModel<>();
         disapprovedCourseList = new JList<>(disapprovedListModel);
         disapprovedCourseList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        // Synchronize selection - clear other lists when this one is selected
+        disapprovedCourseList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting() && !isUpdatingSelection) {
+                    isUpdatingSelection = true;
+                    pendingCourseList.clearSelection();
+                    approvedCourseList.clearSelection();
+                    isUpdatingSelection = false;
+                }
+            }
+        });
         JScrollPane disapprovedScrollPane = new JScrollPane(disapprovedCourseList);
         disapprovedScrollPane.setBounds(rightX, startY + labelHeight + 10, tileWidth, tileHeight);
         add(disapprovedScrollPane);
@@ -129,7 +170,7 @@ public class ManageCoursesFrame extends JFrame {
 
         // Delete button for all (works on any selected)
         deleteButton = new JButton("Delete Course");
-        deleteButton.setBounds(centerX, startY + tileHeight + labelHeight + 35, 180, 35);
+        deleteButton.setBounds(centerX+120, startY + tileHeight + labelHeight + 35, 180, 35);
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -149,6 +190,17 @@ public class ManageCoursesFrame extends JFrame {
         });
         add(viewStudentsButton);
 
+        // Review Course Details button (works on any selected course)
+        JButton reviewButton = new JButton("Review Course Details");
+        reviewButton.setBounds(startX + 270, startY + tileHeight + labelHeight + 35, 180, 35);
+        reviewButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                reviewCourseDetails();
+            }
+        });
+        add(reviewButton);
+
         JButton backButton = new JButton("Back");
 
         int backButtonWidth = 100;
@@ -160,7 +212,8 @@ public class ManageCoursesFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new AdminDashboardFrame(user, authController, courseController, studentController, lessonController, adminController).setVisible(true);
+                AdminDashboardFrame adminDashboardFrame = new AdminDashboardFrame(user, authController, courseController, studentController, lessonController, adminController, null);
+                adminDashboardFrame.setVisible(true);
             }
         });
         add(backButton);
@@ -319,6 +372,122 @@ public class ManageCoursesFrame extends JFrame {
         }
 
         JOptionPane.showMessageDialog(this, sb.toString(), "Enrolled Students", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void reviewCourseDetails() {
+        Course selectedCourse = null;
+        int idx = -1;
+        
+        // Check which list has a selection
+        idx = pendingCourseList.getSelectedIndex();
+        if (idx >= 0) {
+            selectedCourse = pendingCourses.get(idx);
+        } else {
+            idx = approvedCourseList.getSelectedIndex();
+            if (idx >= 0) {
+                selectedCourse = approvedCourses.get(idx);
+            } else {
+                idx = disapprovedCourseList.getSelectedIndex();
+                if (idx >= 0) {
+                    selectedCourse = disapprovedCourses.get(idx);
+                }
+            }
+        }
+        
+        if (selectedCourse == null) {
+            JOptionPane.showMessageDialog(this, "Please select a course to review", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        // Get instructor name
+        String instructorName = "Unknown";
+        try {
+            User instructor = studentController.getUserById(selectedCourse.getInstructorId());
+            instructorName = instructor.getUsername() + " (" + instructor.getEmail() + ")";
+        } catch (Exception ex) {
+            // Keep "Unknown"
+        }
+        
+        // Build course details string
+        StringBuilder details = new StringBuilder();
+        details.append("=== COURSE DETAILS ===\n\n");
+        details.append("Title: ").append(selectedCourse.getTitle()).append("\n");
+        details.append("Description: ").append(selectedCourse.getDescription()).append("\n");
+        details.append("Status: ").append(selectedCourse.getApproveStatus().toUpperCase()).append("\n");
+        details.append("Instructor: ").append(instructorName).append("\n");
+        details.append("Course ID: ").append(selectedCourse.getCourseId()).append("\n\n");
+        
+        details.append("=== STATISTICS ===\n");
+        details.append("Total Lessons: ").append(selectedCourse.getLessons() != null ? selectedCourse.getLessons().size() : 0).append("\n");
+        details.append("Enrolled Students: ").append(selectedCourse.getStudents() != null ? selectedCourse.getStudents().size() : 0).append("\n\n");
+        
+        // List lessons
+        if (selectedCourse.getLessons() != null && !selectedCourse.getLessons().isEmpty()) {
+            details.append("=== LESSONS ===\n");
+            int lessonNum = 1;
+            for (model.Lesson lesson : selectedCourse.getLessons()) {
+                details.append(lessonNum).append(". ").append(lesson.getTitle()).append("\n");
+                details.append("   Lesson ID: ").append(lesson.getLessonId()).append("\n");
+                
+                // Check if lesson has quiz
+                if (lesson.getQuizzes() != null && !lesson.getQuizzes().isEmpty()) {
+                    model.Quiz quiz = lesson.getQuizzes().get(0);
+                    details.append("   Quiz: ").append(quiz.getTitle()).append("\n");
+                    details.append("   Quiz Questions: ").append(quiz.getQuestions().size()).append("\n");
+                    details.append("   Passing Score: ").append(String.format("%.1f", quiz.getPassScorePercent())).append("%\n");
+                    details.append("   Max Retries: ").append(quiz.getMaxRetries()).append("\n");
+                    
+                    // Quiz attempts count
+                    if (lesson.getAttempts() != null) {
+                        long quizAttempts = lesson.getAttempts().stream()
+                                .filter(a -> a.getQuizId().equals(quiz.getQuizId()))
+                                .count();
+                        details.append("   Total Quiz Attempts: ").append(quizAttempts).append("\n");
+                    }
+                } else {
+                    details.append("   Quiz: None\n");
+                }
+                details.append("\n");
+                lessonNum++;
+            }
+        } else {
+            details.append("=== LESSONS ===\n");
+            details.append("No lessons added yet.\n\n");
+        }
+        
+        // List enrolled students
+        if (selectedCourse.getStudents() != null && !selectedCourse.getStudents().isEmpty()) {
+            details.append("=== ENROLLED STUDENTS ===\n");
+            for (String studentId : selectedCourse.getStudents()) {
+                try {
+                    User student = studentController.getUserById(studentId);
+                    List<String> completed = student.getProgress().getOrDefault(selectedCourse.getCourseId(), new ArrayList<>());
+                    int total = selectedCourse.getLessons().size();
+                    int done = completed.size();
+                    double percentage = total > 0 ? (done * 100.0 / total) : 0;
+                    details.append("- ").append(student.getUsername())
+                          .append(" (").append(student.getEmail()).append(")")
+                          .append(" - Progress: ").append(done).append("/").append(total)
+                          .append(" (").append(String.format("%.1f", percentage)).append("%)\n");
+                } catch (Exception ex) {
+                    details.append("- Unknown student (ID: ").append(studentId).append(")\n");
+                }
+            }
+        } else {
+            details.append("=== ENROLLED STUDENTS ===\n");
+            details.append("No students enrolled yet.\n");
+        }
+        
+        // Display in a scrollable dialog
+        JTextArea textArea = new JTextArea(details.toString());
+        textArea.setEditable(false);
+        textArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        scrollPane.setPreferredSize(new Dimension(600, 500));
+        
+        JOptionPane.showMessageDialog(this, scrollPane, 
+                "Course Details: " + selectedCourse.getTitle(), 
+                JOptionPane.INFORMATION_MESSAGE);
     }
 }
 

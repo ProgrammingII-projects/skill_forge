@@ -33,11 +33,30 @@ public class StudentController {
     try {
         boolean lessonsDone = studentService.hasCompletedAllLessons(courseId, userId);
         boolean quizzesPassed = quizService.hasPassedAllQuizzes(courseId, userId);
+        
+        // Also check if certificate is already earned
+        if (hasCertificateForCourse(courseId, userId)) {
+            return false;
+        }
+        
         return lessonsDone && quizzesPassed;
     } catch (Exception e) {
         return false;
     }
 }
+
+    public boolean hasCertificateForCourse(String courseId, String userId) {
+        try {
+            User user = studentService.getUserById(userId);
+            return user.hasCertificateForCourse(courseId);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void earnCertificate(String studentId, String courseId) throws Exception {
+        studentService.earnCertificate(studentId, courseId);
+    }
 
     
 }

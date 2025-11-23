@@ -10,7 +10,9 @@ import controller.StudentController;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
+import java.util.List;  
+
+import controller.AnalyticsController;
 
 /**
  * Manage Users View (Admin Frontend Layer)
@@ -21,6 +23,7 @@ public class ManageUsersFrame extends JFrame {
     private StudentController studentController;
     private LessonController lessonController;
     private AdminController adminController;
+    private AnalyticsController analyticsController;
     private User user;
     private JList<String> userList;
     private DefaultListModel<String> listModel;
@@ -31,14 +34,14 @@ public class ManageUsersFrame extends JFrame {
     private JButton editUserButton;
     private List<User> users;
 
-    public ManageUsersFrame(User user, AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController, AdminController adminController) {
+    public ManageUsersFrame(User user, AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController, AdminController adminController, AnalyticsController analyticsController) {
         this.user = user;
         this.authController = authController;
         this.courseController = courseController;
         this.studentController = studentController;
         this.lessonController = lessonController;
-        this.adminController = adminController;
-
+        this.adminController = adminController; 
+        this.analyticsController = analyticsController;
         setTitle("Manage Users");
         setSize(600, 420);
         setLocationRelativeTo(null);

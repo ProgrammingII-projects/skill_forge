@@ -13,6 +13,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import controller.AnalyticsController;
+import view.AnalyticsFrame;
 
 /**
  * Instructor Dashboard View (Frontend Layer)
@@ -32,14 +34,18 @@ public class AdminDashboardFrame extends JFrame {
     private JButton deleteButton;
     private JButton manageLessonsButton;
     private List<Course> courses;
+    private AnalyticsController analyticsController;
 
-    public AdminDashboardFrame(User u, AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController, AdminController adminController) {
+    public AdminDashboardFrame(User u, AuthController authController, CourseController courseController, 
+                          StudentController studentController, LessonController lessonController, 
+                          AdminController adminController, AnalyticsController analyticsController) {
         this.user = u;
         this.authController = authController;
         this.courseController = courseController;
         this.studentController = studentController;
         this.lessonController = lessonController;
         this.adminController = adminController;
+        this.analyticsController = analyticsController;
         
         setTitle("Admin - " + u.getUsername()
         );
@@ -85,20 +91,32 @@ public class AdminDashboardFrame extends JFrame {
         });
         add(logoutButton);
         
+        JButton analyticsButton = new JButton("View Analytics");
+        analyticsButton.setBounds(50, 145, 600, 35);
+        analyticsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AnalyticsFrame analyticsFrame = new AnalyticsFrame(user, analyticsController, courseController, 
+                                                                   null, AdminDashboardFrame.this);
+                analyticsFrame.setVisible(true);
+            }
+        });
+        add(analyticsButton);
+        
     }
 
     
 
     private void manageUsers() {
         dispose();
-        ManageUsersFrame ManageUsersFrame = new  ManageUsersFrame( user,  authController,  courseController,  studentController,  lessonController, adminController);
+        ManageUsersFrame ManageUsersFrame = new  ManageUsersFrame( user,  authController,  courseController,  studentController,  lessonController, adminController,analyticsController);
         ManageUsersFrame.setVisible(true);
     
     }
 
     private void manageCourses() {
         dispose();
-        ManageCoursesFrame manageUsersFrame = new ManageCoursesFrame( user,  authController,  courseController,  studentController,  lessonController,  adminController);
+        ManageCoursesFrame manageUsersFrame = new ManageCoursesFrame( user,  authController,  courseController,  studentController,  lessonController,  adminController, analyticsController);
          manageUsersFrame.setVisible(true);
     
     }
