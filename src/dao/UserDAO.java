@@ -10,7 +10,7 @@ import org.json.JSONArray;
  * Data Access Object for User entity
  * Handles all database operations for users (Backend Layer)
  */
-public sealed class UserDAO permits dao.AdminDAO {
+public class UserDAO  {
     private Path file;
 
     public UserDAO(String filePath) {

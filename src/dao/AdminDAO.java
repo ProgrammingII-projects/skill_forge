@@ -4,7 +4,7 @@ import java.util.List;
 
 import model.User;
 
-public final class AdminDAO extends UserDAO {
+public  class AdminDAO extends UserDAO {
     public AdminDAO(String filePath) {
         super(filePath);
     }

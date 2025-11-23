@@ -1,6 +1,8 @@
 package dao;
 
 import model.Quiz;
+import model.Lesson;
+import model.Course;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -13,75 +15,80 @@ import java.util.*;
 public class QuizDAO {
 
     private final String filePath;
+    private final CourseDAO courseDAO;
 
-    public QuizDAO(String filePath) {
+    public QuizDAO(String filePath, CourseDAO courseDAO) {
         this.filePath = filePath;
+        this.courseDAO = courseDAO;
     }
 
-    // Load all quizzes
     public List<Quiz> loadAll() {
-        try {
-            if (!Files.exists(Paths.get(filePath))) {
-                return new ArrayList<>();
+        List<Quiz> allQuizzes = new ArrayList<>();
+        List<Course> courses = courseDAO.loadAll();
+        for (Course course : courses) {
+            for (Lesson lesson : course.getLessons()) {
+                allQuizzes.addAll(lesson.getQuizzes());
             }
+        }
+        return allQuizzes;
+    }
 
-            String data = new String(Files.readAllBytes(Paths.get(filePath)));
-            JSONArray arr = new JSONArray(data);
+    private void saveAll(List<Quiz> quizzes) {
+    }
 
-            List<Quiz> quizzes = new ArrayList<>();
-            for (int i = 0; i < arr.length(); i++) {
-                quizzes.add(Quiz.fromJson(arr.getJSONObject(i)));
+    public void saveQuiz(Quiz quiz) {
+        List<Course> courses = courseDAO.loadAll();
+        for (Course course : courses) {
+            for (Lesson lesson : course.getLessons()) {
+                for (int i = 0; i < lesson.getQuizzes().size(); i++) {
+                    if (lesson.getQuizzes().get(i).getQuizId().equals(quiz.getQuizId())) {
+                        lesson.getQuizzes().set(i, quiz);
+                        courseDAO.updateCourse(course);
+                        return;
+                    }
+                }
             }
-            return quizzes;
+        }
+    }
 
-        } catch (Exception e) {
-            e.printStackTrace();
+    public Quiz getQuiz(String id) {
+        List<Course> courses = courseDAO.loadAll();
+        for (Course course : courses) {
+            for (Lesson lesson : course.getLessons()) {
+                for (Quiz quiz : lesson.getQuizzes()) {
+                    if (quiz.getQuizId().equals(id)) {
+                        return quiz;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    public boolean deleteQuiz(String id) {
+        List<Course> courses = courseDAO.loadAll();
+        for (Course course : courses) {
+            for (Lesson lesson : course.getLessons()) {
+                boolean removed = lesson.getQuizzes().removeIf(q -> q.getQuizId().equals(id));
+                if (removed) {
+                    courseDAO.updateCourse(course);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public List<Quiz> getQuizzesByCourse(String courseId) {
+        Optional<Course> courseOpt = courseDAO.findById(courseId);
+        if (!courseOpt.isPresent()) {
             return new ArrayList<>();
         }
-    }
-
-    // Save all quizzes
-    private void saveAll(List<Quiz> quizzes) {
-        JSONArray arr = new JSONArray();
-        for (Quiz q : quizzes) arr.put(q.toJson());
-
-        try (FileWriter fw = new FileWriter(filePath)) {
-            fw.write(arr.toString(4)); // pretty JSON
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Add or update quiz
-    public void saveQuiz(Quiz quiz) {
-        List<Quiz> all = loadAll();
-        all.removeIf(q -> q.getQuizId().equals(quiz.getQuizId()));
-        all.add(quiz);
-        saveAll(all);
-    }
-
-    // Find quiz by ID
-    public Quiz getQuiz(String id) {
-        return loadAll()
-                .stream()
-                .filter(q -> q.getQuizId().equals(id))
-                .findFirst()
-                .orElse(null);
-    }
-
-    // Delete quiz
-    public boolean deleteQuiz(String id) {
-        List<Quiz> quizzes = loadAll();
-        boolean removed = quizzes.removeIf(q -> q.getQuizId().equals(id));
-        if (removed) saveAll(quizzes);
-        return removed;
-    }
-
-    // List all quizzes for a course
-    public List<Quiz> getQuizzesByCourse(String quizID) {
+        
         List<Quiz> result = new ArrayList<>();
-        for (Quiz q : loadAll()) {
-            if (q.getQuizId().equals(quizID)) result.add(q);
+        Course course = courseOpt.get();
+        for (Lesson lesson : course.getLessons()) {
+            result.addAll(lesson.getQuizzes());
         }
         return result;
     }
