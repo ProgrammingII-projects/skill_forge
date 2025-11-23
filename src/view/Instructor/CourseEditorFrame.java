@@ -1,4 +1,4 @@
-package view;
+package view.Instructor;
 
 import controller.CourseController;
 import model.Course;

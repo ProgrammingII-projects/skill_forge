@@ -8,6 +8,8 @@ import model.Certificate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Service layer for Student business logic (Backend Layer)
@@ -92,5 +94,11 @@ public class StudentService {
 
 
 
+    
+    public List<Course> getApprovedCourses() {
+        return courseDAO.loadAll().stream()
+                .filter(c -> c.getApproveStatus().equals("approved"))
+                .collect(Collectors.toList());
+    }
 }
 

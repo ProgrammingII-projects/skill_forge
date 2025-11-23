@@ -1,13 +1,15 @@
-package view;
+package view.Student;
 
 import javax.swing.*;
 import model.*;
+import view.LoginFrame;
 import controller.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Optional;
+import controller.QuizController;
 
 /**
  * Student Dashboard View (Frontend Layer)
@@ -24,13 +26,17 @@ public class StudentDashboardFrame extends JFrame {
     private JButton enrollButton;
     private JButton viewButton;
     private List<Course> allCourses;
+    private QuizController quizController;
 
-    public StudentDashboardFrame(User u, AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController) {
+    public StudentDashboardFrame(User u, AuthController authController, CourseController courseController, 
+                            StudentController studentController, LessonController lessonController, 
+                            QuizController quizController) {
         this.user = u;
         this.authController = authController;
         this.courseController = courseController;
         this.studentController = studentController;
         this.lessonController = lessonController;
+        this.quizController = quizController;
         
         setTitle("Student - " + u.getUsername());
         setSize(700, 400);
@@ -157,7 +163,8 @@ public class StudentDashboardFrame extends JFrame {
             return;
         }
         
-        LessonViewerFrame viewer = new LessonViewerFrame(course.getCourseId(), courseController, studentController, user.getUserId());
+        LessonViewerFrame viewer = new LessonViewerFrame(course.getCourseId(), courseController, 
+                                                      studentController, quizController, user.getUserId());
         viewer.setVisible(true);
         viewer.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -197,7 +204,7 @@ public class StudentDashboardFrame extends JFrame {
     
     private void logout() {
         dispose();
-        LoginFrame loginFrame = new LoginFrame(authController, courseController, studentController, lessonController);
+        LoginFrame loginFrame = new LoginFrame(authController, courseController, studentController, lessonController, quizController);
         loginFrame.setVisible(true);
     }
 }

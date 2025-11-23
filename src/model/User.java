@@ -29,6 +29,8 @@ public class User {
     public String getEmail() { return email; }
     public String getPasswordHash() { return passwordHash; }
     public String getRole() { return role; }
+    public void setPassword(String pass){passwordHash = pass;}
+    public void setRole(String Role){role = Role;}
     public List<String> getEnrolledCourses() { return enrolledCourses; }
     public Map<String, List<String>> getProgress() { return progress; }
     public List<Certificate> getCertificates(){ return certificates;}

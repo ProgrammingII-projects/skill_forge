@@ -1,7 +1,8 @@
-package view;
+package view.Instructor;
 
 import javax.swing.*;
 import model.User;
+import view.LoginFrame;
 import model.Course;
 import controller.CourseController;
 import controller.StudentController;
@@ -11,6 +12,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import controller.QuizController;
 
 /**
  * Instructor Dashboard View (Frontend Layer)
@@ -22,6 +24,7 @@ public class InstructorDashboardFrame extends JFrame {
     private StudentController studentController;
     private LessonController lessonController;
     private AuthController authController;
+    private QuizController quizController;
     private JList<String> courseList;
     private DefaultListModel<String> listModel;
     private JButton createButton;
@@ -30,12 +33,15 @@ public class InstructorDashboardFrame extends JFrame {
     private JButton manageLessonsButton;
     private List<Course> courses;
 
-    public InstructorDashboardFrame(User u, AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController) {
+    public InstructorDashboardFrame(User u, AuthController authController, CourseController courseController, 
+                               StudentController studentController, LessonController lessonController, 
+                               QuizController quizController) {
         this.user = u;
         this.authController = authController;
         this.courseController = courseController;
         this.studentController = studentController;
         this.lessonController = lessonController;
+        this.quizController = quizController;
         
         setTitle("Instructor - " + u.getUsername());
         setSize(700, 400);
@@ -162,7 +168,7 @@ public class InstructorDashboardFrame extends JFrame {
             return;
         }
         Course course = courses.get(index);
-        LessonEditorFrame editor = new LessonEditorFrame(course, courseController, lessonController);
+        LessonEditorFrame editor = new LessonEditorFrame(course, courseController, lessonController, quizController);
         editor.setVisible(true);
         editor.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -230,7 +236,7 @@ public class InstructorDashboardFrame extends JFrame {
     
     private void logout() {
         dispose();
-        LoginFrame loginFrame = new LoginFrame(authController, courseController, studentController, lessonController);
+        LoginFrame loginFrame = new LoginFrame(authController, courseController, studentController, lessonController, quizController);
         loginFrame.setVisible(true);
     }
 }

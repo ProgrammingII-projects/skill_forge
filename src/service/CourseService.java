@@ -26,7 +26,7 @@ public class CourseService {
         if (!userDAO.findById(instructorId).isPresent()) throw new Exception("Instructor not found");
         
         String id = UUID.randomUUID().toString();
-        Course c = new Course(id, title, description == null ? "" : description, instructorId);
+        Course c = new Course(id, title, description == null ? "" : description, instructorId,"pending");
         courseDAO.addCourse(c);
         return c;
     }
