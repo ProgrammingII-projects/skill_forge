@@ -65,6 +65,6 @@ public class QuizController {
     public boolean canRetakeQuiz(String courseId, String lessonId, String userId) throws Exception {
         return quizService.canRetakeQuiz(courseId, lessonId, userId);
     }
-
+    
     
 }

@@ -30,4 +30,5 @@ public class LessonController {
     public List<Lesson> getLessons(String courseId) throws Exception {
         return lessonService.getLessons(courseId);
     }
+    
 }
