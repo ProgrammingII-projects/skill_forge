@@ -1,5 +1,6 @@
 {
     "java.project.referencedLibraries": [
+        "lib/pdfbox-app-2.0.29.jar",
         "lib/**/*.jar",
         "c:\\Users\\farou\\Downloads\\json-20250517.jar"
     ],
