@@ -29,12 +29,26 @@ public class LoginFrame extends JFrame {
     private JButton loginButton;
     private JButton signupButton;
 
+    public LoginFrame(AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController) {
+        this.authController = authController;
+        this.courseController = courseController;
+        this.studentController = studentController;
+        this.lessonController = lessonController;
+        veiw();
+    }
+
     public LoginFrame(AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController,  AdminController adminController ) {
         this.authController = authController;
         this.courseController = courseController;
         this.studentController = studentController;
         this.lessonController = lessonController;
         this.adminController = adminController;
+        veiw();
+    }
+
+
+
+        private void veiw(){
         
         setTitle("Login");
         setSize(400, 220);
