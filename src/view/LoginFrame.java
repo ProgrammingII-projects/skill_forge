@@ -2,6 +2,7 @@ package view;
 
 import model.User;
 import service.AdminService;
+import service.AnalyticsService;
 import service.AuthService;
 import service.CourseService;
 import service.LessonService;
@@ -24,6 +25,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import controller.AnalyticsController;
+import view.AnalyticsFrame;
 
 /**
  * Login View (Frontend Layer)
@@ -49,6 +52,7 @@ public class LoginFrame extends JFrame {
     private LessonService lessonService = new LessonService(courseDAO);
     private AdminService adminService = new AdminService(courseDAO, adminDAO);
     private QuizService quizService = new QuizService(quizDAO, courseDAO);
+    private AnalyticsService analyticsService = new AnalyticsService(courseDAO, userDAO);
 
     // Initialize Controller Layer (Presentation Logic - Bridge between Frontend and Backend)
     private AuthController authController = new AuthController(authService);
@@ -57,6 +61,7 @@ public class LoginFrame extends JFrame {
     private LessonController lessonController = new LessonController(lessonService);
     private AdminController adminController = new AdminController(adminService);
     private QuizController quizController = new QuizController(quizService);
+    private AnalyticsController analyticsController = new AnalyticsController(analyticsService);
 
     public LoginFrame() {
         veiw();
@@ -129,13 +134,13 @@ public class LoginFrame extends JFrame {
             
             if ("instructor".equalsIgnoreCase(user.getRole())) {
                 new InstructorDashboardFrame(user, authController, courseController, 
-                                     studentController, lessonController, quizController).setVisible(true);
+                                     studentController, lessonController, quizController, analyticsController).setVisible(true);
             } 
             else if("student".equalsIgnoreCase(user.getRole())) {
                 new StudentDashboardFrame(user, authController, courseController, studentController, lessonController, quizController).setVisible(true);
             }
             else {
-                new AdminDashboardFrame(user, authController, courseController, studentController, lessonController, adminController).setVisible(true);
+                new AdminDashboardFrame(user, authController, courseController, studentController, lessonController, adminController, analyticsController).setVisible(true);
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Login Failed", JOptionPane.ERROR_MESSAGE);

@@ -13,6 +13,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import controller.QuizController;
+import controller.AnalyticsController;
+import view.AnalyticsFrame;
+import view.ChartFrame;
 
 /**
  * Instructor Dashboard View (Frontend Layer)
@@ -32,19 +35,21 @@ public class InstructorDashboardFrame extends JFrame {
     private JButton deleteButton;
     private JButton manageLessonsButton;
     private List<Course> courses;
+    private AnalyticsController analyticsController;
 
     public InstructorDashboardFrame(User u, AuthController authController, CourseController courseController, 
                                StudentController studentController, LessonController lessonController, 
-                               QuizController quizController) {
+                               QuizController quizController, AnalyticsController analyticsController) {
         this.user = u;
         this.authController = authController;
         this.courseController = courseController;
         this.studentController = studentController;
         this.lessonController = lessonController;
         this.quizController = quizController;
+        this.analyticsController = analyticsController;
         
         setTitle("Instructor - " + u.getUsername());
-        setSize(700, 400);
+        setSize(700, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
@@ -58,7 +63,7 @@ public class InstructorDashboardFrame extends JFrame {
         courseList = new JList<>(listModel);
         courseList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         JScrollPane scrollPane = new JScrollPane(courseList);
-        scrollPane.setBounds(20, 55, 450, 280);
+        scrollPane.setBounds(20, 55, 450, 380);
         add(scrollPane);
         
         createButton = new JButton("Create Course");
@@ -111,8 +116,33 @@ public class InstructorDashboardFrame extends JFrame {
         });
         add(viewStudentsButton);
         
+
+        JButton analyticsButton = new JButton("View Analytics");
+        analyticsButton.setBounds(490, 280, 180, 35);
+        analyticsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AnalyticsFrame analyticsFrame = new AnalyticsFrame(user, analyticsController, courseController, 
+                                                                   InstructorDashboardFrame.this, null);
+                analyticsFrame.setVisible(true);
+            }
+        });
+        add(analyticsButton);
+        
+        JButton insightsButton = new JButton("View Insights");
+        insightsButton.setBounds(490, 325, 180, 35);
+        insightsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ChartFrame chartFrame = new ChartFrame(user, analyticsController, courseController, 
+                                                       InstructorDashboardFrame.this);
+                chartFrame.setVisible(true);
+            }
+        });
+        add(insightsButton);
+
         JButton logoutButton = new JButton("Logout");
-        logoutButton.setBounds(490, 300, 180, 35);
+        logoutButton.setBounds(490, 380, 180, 35);
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -124,7 +154,7 @@ public class InstructorDashboardFrame extends JFrame {
         refreshCourseList();
     }
     
-    private void refreshCourseList() {
+    public void refreshCourseList() {
         courses = courseController.getCoursesByInstructor(user.getUserId());
         listModel.clear();
         for (Course c : courses) {
