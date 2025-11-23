@@ -122,14 +122,12 @@ public class EditUserFrame extends JFrame {
         }
        
         try {
-            // Password is optional - if empty, keep existing password
             String passwordToUse = password.isEmpty() ? null : password;
             
             adminController.updateUser(selectedUser.getUserId(), username, email, passwordToUse, role);
 
             JOptionPane.showMessageDialog(this, "User updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             
-            // Refresh parent frame if callback is provided
             if (onSaveCallback != null) {
                 onSaveCallback.run();
             }
