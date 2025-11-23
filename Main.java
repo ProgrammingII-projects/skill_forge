@@ -1,22 +1,7 @@
 
 import javax.swing.SwingUtilities;
 import view.LoginFrame;
-import dao.UserDAO;
-import dao.AdminDAO;
-import dao.CourseDAO;
-import dao.QuizDAO;
-import service.AdminService;
-import service.AuthService;
-import service.CourseService;
-import service.StudentService;
-import service.LessonService;
-import service.QuizService;
-import controller.AdminController;
-import controller.AuthController;
-import controller.CourseController;
-import controller.StudentController;
-import controller.LessonController;
-import controller.QuizController;
+
 
 /**
  * Main Application Entry Point
