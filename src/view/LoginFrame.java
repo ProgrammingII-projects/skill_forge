@@ -1,6 +1,12 @@
 package view;
 
 import model.User;
+import service.AdminService;
+import service.AuthService;
+import service.CourseService;
+import service.LessonService;
+import service.QuizService;
+import service.StudentService;
 import view.Admin.AdminDashboardFrame;
 import view.Instructor.InstructorDashboardFrame;
 import view.Student.StudentDashboardFrame;
@@ -8,6 +14,10 @@ import controller.AdminController;
 import controller.AuthController;
 import controller.CourseController;
 import controller.StudentController;
+import dao.AdminDAO;
+import dao.CourseDAO;
+import dao.QuizDAO;
+import dao.UserDAO;
 import controller.LessonController;
 import controller.QuizController;
 import javax.swing.*;
@@ -20,47 +30,40 @@ import java.awt.event.ActionListener;
  * Only interacts with Controllers, not DAOs or Services directly
  */
 public class LoginFrame extends JFrame {
-    private AuthController authController;
-    private CourseController courseController;
-    private StudentController studentController;
-    private LessonController lessonController;
-    private AdminController adminController;
-    private QuizController quizController;
+
     private JTextField emailField;
     private JPasswordField passwordField;
     private JButton loginButton;
     private JButton signupButton;
 
-    public LoginFrame(AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController, QuizController quizController) {
-        this.authController = authController;
-        this.courseController = courseController;
-        this.studentController = studentController;
-        this.lessonController = lessonController;
-        this.quizController = quizController;
-        veiw();
-    }
-  
-    public LoginFrame(AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController,  AdminController adminController) {
-        this.authController = authController;
-        this.courseController = courseController;
-        this.studentController = studentController;
-        this.lessonController = lessonController;
-        this.adminController = adminController;
-        veiw();
-    }
-    public LoginFrame(AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController,  AdminController adminController,QuizController quizController) {
-        this.authController = authController;
-        this.courseController = courseController;
-        this.studentController = studentController;
-        this.lessonController = lessonController;
-        this.adminController = adminController;
-        this.quizController = quizController;
+    private UserDAO userDAO = new UserDAO("Lab 7/skill_forge/data/users.json");
+    private CourseDAO courseDAO = new CourseDAO("Lab 7/skill_forge/data/courses.json");
+    private AdminDAO adminDAO = new AdminDAO("Lab 7/skill_forge/data/users.json");
+    // QuizDAO now uses CourseDAO to work with courses.json without overwriting
+    private QuizDAO quizDAO = new QuizDAO("Lab 7/skill_forge/data/courses.json", courseDAO);
+    
+    // Initialize Service Layer (Backend - Business Logic)
+    private AuthService authService = new AuthService(userDAO);
+    private CourseService courseService = new CourseService(courseDAO, userDAO);
+    private StudentService studentService = new StudentService(userDAO, courseDAO);
+    private LessonService lessonService = new LessonService(courseDAO);
+    private AdminService adminService = new AdminService(courseDAO, adminDAO);
+    private QuizService quizService = new QuizService(quizDAO, courseDAO);
+
+    // Initialize Controller Layer (Presentation Logic - Bridge between Frontend and Backend)
+    private AuthController authController = new AuthController(authService);
+    private CourseController courseController = new CourseController(courseService);
+    private StudentController studentController = new StudentController(studentService, quizService);
+    private LessonController lessonController = new LessonController(lessonService);
+    private AdminController adminController = new AdminController(adminService);
+    private QuizController quizController = new QuizController(quizService);
+
+    public LoginFrame() {
         veiw();
     }
 
 
-
-        private void veiw(){
+    private void veiw(){
         
         setTitle("Login");
         setSize(400, 220);
