@@ -1,6 +1,7 @@
 package model;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,7 +21,9 @@ public class Lesson {
         this.lessonId = lessonId;
         this.title = title;
         this.content = content;
-
+        this.quizzes = new ArrayList<>();
+        this.attempts = new ArrayList<>();
+        this.completedStudents = new ArrayList<>();
     }
 
     public String getLessonId() {
