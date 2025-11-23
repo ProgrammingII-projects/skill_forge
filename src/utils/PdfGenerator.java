@@ -73,7 +73,14 @@ public class PdfGenerator {
             File outFile = new File(fileName);
             document.save(outFile);
 
-            return outFile.getAbsolutePath();
+            // Ensure Certificates directory exists and save file there
+            File certificatesDir = new File("Certificates");
+            if (!certificatesDir.exists()) {
+                certificatesDir.mkdirs();
+            }
+            File outFileInFolder = new File(certificatesDir, fileName);
+            document.save(outFileInFolder);
+            return outFileInFolder.getAbsolutePath();
 
         } catch (IOException e) {
             e.printStackTrace();

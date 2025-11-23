@@ -9,7 +9,9 @@ import controller.LessonController;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.ActionListener;   
+
+import controller.AnalyticsController;
 
 /**
  * Signup View (Frontend Layer)
@@ -29,15 +31,17 @@ public class AdminAddUserFrame extends JFrame {
     private JComboBox<String> roleCombo;
     private JButton signupButton;
     private JButton cancelButton;
+    private AnalyticsController analyticsController;
 
-    public AdminAddUserFrame(User user, AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController, AdminController adminController) {
+    
+    public AdminAddUserFrame(User user, AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController, AdminController adminController, AnalyticsController analyticsController) {
         this.user = user;
         this.authController = authController;
         this.courseController = courseController;
         this.studentController = studentController;
         this.lessonController = lessonController;
-        this.adminController = adminController;
-        
+        this.adminController = adminController; 
+        this.analyticsController = analyticsController;
         setTitle("Add User");
         setSize(420, 300);
         setLocationRelativeTo(null);
@@ -119,7 +123,7 @@ public class AdminAddUserFrame extends JFrame {
             JOptionPane.showMessageDialog(this, "User Added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             
             dispose();
-            ManageUsersFrame ManageUsersFrame = new  ManageUsersFrame( user,  authController,  courseController,  studentController,  lessonController, adminController);
+            ManageUsersFrame ManageUsersFrame = new  ManageUsersFrame( user,  authController,  courseController,  studentController,  lessonController, adminController,analyticsController);
             ManageUsersFrame.setVisible(true);
         
         } catch (Exception ex) {
