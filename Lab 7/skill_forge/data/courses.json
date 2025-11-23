@@ -1,325 +1,363 @@
 [
   {
-    "courseId": "9f975e6b-605b-4411-a701-4a0656a01c55",
-    "title": "logic",
-    "description": "and or not",
-    "instructorId": "02d44643-bdee-4e18-8745-434445a36ea7",
     "approveStatus": "pending",
+    "description": "and or not",
+    "students": ["4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"],
+    "title": "logic",
+    "courseId": "9f975e6b-605b-4411-a701-4a0656a01c55",
+    "instructorId": "02d44643-bdee-4e18-8745-434445a36ea7",
     "lessons": [
       {
+        "completedStudents": ["4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"],
         "lessonId": "5029b250-eacf-4897-bb32-4338576b6827",
+        "quizzes": [{
+          "passScorePercent": 60,
+          "maxRetries": -1,
+          "quizId": "q123",
+          "questions": [{
+            "questionId": "x1",
+            "options": [
+              "true",
+              "false"
+            ],
+            "text": "What is true AND false?",
+            "correctAnswer": "false"
+          }],
+          "title": "Boolean Quiz"
+        }],
         "title": "boolean",
         "content": "boolean math",
-        "quizzes": [
-          {
-            "quizId": "q123",
-            "title": "Boolean Quiz",
-            "passScorePercent": 60.0,
-            "maxRetries": -1,
-            "questions": [
-              {
-                "questionId": "x1",
-                "text": "What is true AND false?",
-                "options": ["true", "false"],
-                "correctAnswer": "false"
-              }
-            ]
-          }
-        ],
-        "attempts": [
-          {
-            "attemptId": "att-001",
-            "quizId": "q123",
-            "userId": "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1",
-            "selectedIndices": [1],
-            "scorePercent": 100.0,
-            "passed": true,
-            "timestamp": 1700000000000,
-            "attemptNumber": 1
-          }
-        ],
-        "completedStudents": ["4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"]
+        "attempts": [{
+          "attemptNumber": 1,
+          "scorePercent": 100,
+          "quizId": "q123",
+          "selectedIndices": [1],
+          "passed": true,
+          "userId": "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1",
+          "attemptId": "att-001"
+        }]
       },
       {
+        "completedStudents": ["4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"],
         "lessonId": "62ed92f8-67c3-4719-a568-c8faf32ce03d",
+        "quizzes": [{
+          "passScorePercent": 60,
+          "maxRetries": -1,
+          "quizId": "q124",
+          "questions": [{
+            "questionId": "x2",
+            "options": [
+              "true",
+              "false"
+            ],
+            "text": "What does an OR gate output when both inputs are false?",
+            "correctAnswer": "false"
+          }],
+          "title": "Logic Gates Quiz"
+        }],
         "title": "logic gates",
         "content": "and or not",
-        "quizzes": [
-          {
-            "quizId": "q124",
-            "title": "Logic Gates Quiz",
-            "passScorePercent": 60.0,
-            "maxRetries": -1,
-            "questions": [
-              {
-                "questionId": "x2",
-                "text": "What does an OR gate output when both inputs are false?",
-                "options": ["true", "false"],
-                "correctAnswer": "false"
-              }
-            ]
-          }
-        ],
-        "attempts": [
-          {
-            "attemptId": "att-002",
-            "quizId": "q124",
-            "userId": "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1",
-            "selectedIndices": [1],
-            "scorePercent": 100.0,
-            "passed": true,
-            "timestamp": 1700000100000,
-            "attemptNumber": 1
-          }
-        ],
-        "completedStudents": ["4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"]
+        "attempts": [{
+          "attemptNumber": 1,
+          "scorePercent": 100,
+          "quizId": "q124",
+          "selectedIndices": [1],
+          "passed": true,
+          "userId": "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1",
+          "attemptId": "att-002"
+        }]
       },
       {
+        "completedStudents": [],
         "lessonId": "2db7c537-b830-4cb8-a275-660b11e45da7",
+        "quizzes": [{
+          "passScorePercent": 60,
+          "maxRetries": -1,
+          "quizId": "q125",
+          "questions": [{
+            "questionId": "x3",
+            "options": [
+              "Mapping keys on a keyboard",
+              "Encrypting data"
+            ],
+            "text": "What is a key map used for?",
+            "correctAnswer": "Mapping keys on a keyboard"
+          }],
+          "title": "Key Map Quiz"
+        }],
         "title": "key map",
         "content": "how to key map",
-        "quizzes": [
-          {
-            "quizId": "q125",
-            "title": "Key Map Quiz",
-            "passScorePercent": 60.0,
-            "maxRetries": -1,
-            "questions": [
-              {
-                "questionId": "x3",
-                "text": "What is a key map used for?",
-                "options": ["Mapping keys on a keyboard", "Encrypting data"],
-                "correctAnswer": "Mapping keys on a keyboard"
-              }
-            ]
-          }
-        ],
-        "attempts": [],
-        "completedStudents": []
+        "attempts": []
       }
-    ],
-    "students": [
-      "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"
     ]
   },
   {
-    "courseId": "b42a8d99-d758-4808-810d-8d1ad3396ce6",
-    "title": "modern",
-    "description": "quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum",
-    "instructorId": "02d44643-bdee-4e18-8745-434445a36ea7",
     "approveStatus": "pending",
+    "description": "quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum quantum",
+    "students": ["4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"],
+    "title": "modern",
+    "courseId": "b42a8d99-d758-4808-810d-8d1ad3396ce6",
+    "instructorId": "02d44643-bdee-4e18-8745-434445a36ea7",
     "lessons": [
       {
+        "completedStudents": ["4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"],
         "lessonId": "65559d90-6ec6-437a-863a-0a8fd89bc8e9",
+        "quizzes": [{
+          "passScorePercent": 60,
+          "maxRetries": -1,
+          "quizId": "q126",
+          "questions": [{
+            "questionId": "x4",
+            "options": [
+              "A particle being in multiple states",
+              "A particle being in a single state"
+            ],
+            "text": "What is quantum superposition?",
+            "correctAnswer": "A particle being in multiple states"
+          }],
+          "title": "Quantum Quiz"
+        }],
         "title": "quantum",
         "content": "quantum quantum quantum",
-        "quizzes": [
-          {
-            "quizId": "q126",
-            "title": "Quantum Quiz",
-            "passScorePercent": 60.0,
-            "maxRetries": -1,
-            "questions": [
-              {
-                "questionId": "x4",
-                "text": "What is quantum superposition?",
-                "options": ["A particle being in multiple states", "A particle being in a single state"],
-                "correctAnswer": "A particle being in multiple states"
-              }
-            ]
-          }
-        ],
-        "attempts": [
-          {
-            "attemptId": "att-003",
-            "quizId": "q126",
-            "userId": "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1",
-            "selectedIndices": [0],
-            "scorePercent": 100.0,
-            "passed": true,
-            "timestamp": 1700000200000,
-            "attemptNumber": 1
-          }
-        ],
-        "completedStudents": ["4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"]
+        "attempts": [{
+          "attemptNumber": 1,
+          "scorePercent": 100,
+          "quizId": "q126",
+          "selectedIndices": [0],
+          "passed": true,
+          "userId": "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1",
+          "attemptId": "att-003"
+        }]
       },
       {
+        "completedStudents": [],
         "lessonId": "4b664149-9e6d-43f4-8f88-90a7e09c5e21",
+        "quizzes": [{
+          "passScorePercent": 60,
+          "maxRetries": -1,
+          "quizId": "q127",
+          "questions": [{
+            "questionId": "x5",
+            "options": [
+              "Energy-mass equivalence",
+              "Newton's second law"
+            ],
+            "text": "What does E=MC^2 represent?",
+            "correctAnswer": "Energy-mass equivalence"
+          }],
+          "title": "Relativity Quiz"
+        }],
         "title": "relativity",
         "content": "E = MC^2",
-        "quizzes": [
-          {
-            "quizId": "q127",
-            "title": "Relativity Quiz",
-            "passScorePercent": 60.0,
-            "maxRetries": -1,
-            "questions": [
-              {
-                "questionId": "x5",
-                "text": "What does E=MC^2 represent?",
-                "options": ["Energy-mass equivalence", "Newton's second law"],
-                "correctAnswer": "Energy-mass equivalence"
-              }
-            ]
-          }
-        ],
-        "attempts": [],
-        "completedStudents": []
+        "attempts": []
       }
-    ],
-    "students": [
-      "4cd10c2f-68e0-47a0-96a5-121b9caa8ee1"
     ]
   },
   {
-    "courseId": "f1a4d8df-91cd-4d5c-9f8d-dbb1c0cc5c1a",
-    "title": "Programming Basics",
-    "description": "Learn variables, functions, control flow, and data structures.",
-    "instructorId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
     "approveStatus": "pending",
-    "lessons": [
-      {
-        "lessonId": "8d8b07ab-3428-4d95-8a77-1f6576f497ed",
-        "title": "Variables & Types",
-        "content": "Introduction to data types and variables.",
-        "quizzes": [
-          {
-            "quizId": "quiz101",
-            "title": "Variables Quiz",
-            "passScorePercent": 60.0,
-            "maxRetries": -1,
-            "questions": [
-              {
-                "questionId": "q1",
-                "text": "What is a variable?",
-                "options": ["A storage location", "A function"],
-                "correctAnswer": "A storage location"
-              }
-            ]
-          }
-        ],
-        "attempts": [
-          {
-            "attemptId": "att-004",
-            "quizId": "quiz101",
-            "userId": "e52cf2ec-62e2-4d57-b3bc-47080d1f1450",
-            "selectedIndices": [0],
-            "scorePercent": 100.0,
-            "passed": true,
-            "timestamp": 1700000300000,
-            "attemptNumber": 1
-          }
-        ],
-        "completedStudents": ["e52cf2ec-62e2-4d57-b3bc-47080d1f1450"]
-      },
-      {
-        "lessonId": "fc0d5f19-f3f8-4aae-9e89-4dc1b32e682b",
-        "title": "Control Flow",
-        "content": "If-else, loops, and logic structures.",
-        "quizzes": [
-          {
-            "quizId": "quiz102",
-            "title": "Control Flow Quiz",
-            "passScorePercent": 60.0,
-            "maxRetries": -1,
-            "questions": [
-              {
-                "questionId": "q2",
-                "text": "What does an if-else statement do?",
-                "options": ["Controls program flow", "Stores data"],
-                "correctAnswer": "Controls program flow"
-              }
-            ]
-          }
-        ],
-        "attempts": [],
-        "completedStudents": []
-      }
-    ],
+    "description": "Learn variables, functions, control flow, and data structures.",
     "students": [
       "e52cf2ec-62e2-4d57-b3bc-47080d1f1450",
       "0fe30a4d-79d6-4200-9c2e-f9617b835df5"
+    ],
+    "title": "Programming Basics",
+    "courseId": "f1a4d8df-91cd-4d5c-9f8d-dbb1c0cc5c1a",
+    "instructorId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
+    "lessons": [
+      {
+        "completedStudents": ["e52cf2ec-62e2-4d57-b3bc-47080d1f1450"],
+        "lessonId": "8d8b07ab-3428-4d95-8a77-1f6576f497ed",
+        "quizzes": [{
+          "passScorePercent": 60,
+          "maxRetries": -1,
+          "quizId": "quiz101",
+          "questions": [{
+            "questionId": "q1",
+            "options": [
+              "A storage location",
+              "A function"
+            ],
+            "text": "What is a variable?",
+            "correctAnswer": "A storage location"
+          }],
+          "title": "Variables Quiz"
+        }],
+        "title": "Variables & Types",
+        "content": "Introduction to data types and variables.",
+        "attempts": [{
+          "attemptNumber": 1,
+          "scorePercent": 100,
+          "quizId": "quiz101",
+          "selectedIndices": [0],
+          "passed": true,
+          "userId": "e52cf2ec-62e2-4d57-b3bc-47080d1f1450",
+          "attemptId": "att-004"
+        }]
+      },
+      {
+        "completedStudents": [],
+        "lessonId": "fc0d5f19-f3f8-4aae-9e89-4dc1b32e682b",
+        "quizzes": [{
+          "passScorePercent": 60,
+          "maxRetries": -1,
+          "quizId": "quiz102",
+          "questions": [{
+            "questionId": "q2",
+            "options": [
+              "Controls program flow",
+              "Stores data"
+            ],
+            "text": "What does an if-else statement do?",
+            "correctAnswer": "Controls program flow"
+          }],
+          "title": "Control Flow Quiz"
+        }],
+        "title": "Control Flow",
+        "content": "If-else, loops, and logic structures.",
+        "attempts": []
+      }
     ]
   },
   {
-    "courseId": "d54c1b82-7cc3-4c4b-88b3-38fe1c2a0671",
-    "title": "Web Development",
-    "description": "Learn fundamentals of web development: HTML, CSS, JavaScript.",
-    "instructorId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
     "approveStatus": "pending",
+    "description": "Learn fundamentals of web development: HTML, CSS, JavaScript.",
+    "students": ["e52cf2ec-62e2-4d57-b3bc-47080d1f1450"],
+    "title": "Web Development",
+    "courseId": "d54c1b82-7cc3-4c4b-88b3-38fe1c2a0671",
+    "instructorId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
     "lessons": [
       {
+        "completedStudents": [],
         "lessonId": "c0a7b418-4f58-4e06-876d-0ddc589a4b02",
+        "quizzes": [{
+          "passScorePercent": 60,
+          "maxRetries": -1,
+          "quizId": "quiz201",
+          "questions": [{
+            "questionId": "q3",
+            "options": [
+              "HyperText Markup Language",
+              "HighText Machine Language"
+            ],
+            "text": "What does HTML stand for?",
+            "correctAnswer": "HyperText Markup Language"
+          }],
+          "title": "HTML Quiz"
+        }],
         "title": "HTML Basics",
         "content": "Structure web pages using HTML.",
-        "quizzes": [
-          {
-            "quizId": "quiz201",
-            "title": "HTML Quiz",
-            "passScorePercent": 60.0,
-            "maxRetries": -1,
-            "questions": [
-              {
-                "questionId": "q3",
-                "text": "What does HTML stand for?",
-                "options": ["HyperText Markup Language", "HighText Machine Language"],
-                "correctAnswer": "HyperText Markup Language"
-              }
-            ]
-          }
-        ],
-        "attempts": [],
-        "completedStudents": []
+        "attempts": []
       },
       {
+        "completedStudents": [],
         "lessonId": "9aca9840-8969-4332-9644-d3b6fba014e1",
+        "quizzes": [{
+          "passScorePercent": 60,
+          "maxRetries": -1,
+          "quizId": "quiz202",
+          "questions": [{
+            "questionId": "q4",
+            "options": [
+              "Cascading Style Sheets",
+              "Computer Style Sheets"
+            ],
+            "text": "What does CSS stand for?",
+            "correctAnswer": "Cascading Style Sheets"
+          }],
+          "title": "CSS Quiz"
+        }],
         "title": "CSS Fundamentals",
         "content": "Learn to style pages with CSS.",
-        "quizzes": [
-          {
-            "quizId": "quiz202",
-            "title": "CSS Quiz",
-            "passScorePercent": 60.0,
-            "maxRetries": -1,
-            "questions": [
-              {
-                "questionId": "q4",
-                "text": "What does CSS stand for?",
-                "options": ["Cascading Style Sheets", "Computer Style Sheets"],
-                "correctAnswer": "Cascading Style Sheets"
-              }
-            ]
-          }
-        ],
-        "attempts": [],
-        "completedStudents": []
+        "attempts": []
       },
       {
+        "completedStudents": [],
         "lessonId": "5f4d4396-7730-40aa-af48-f8478e73601c",
+        "quizzes": [{
+          "passScorePercent": 60,
+          "maxRetries": -1,
+          "quizId": "quiz203",
+          "questions": [{
+            "questionId": "q5",
+            "options": [
+              "Netscape",
+              "Microsoft"
+            ],
+            "text": "Which company developed JavaScript?",
+            "correctAnswer": "Netscape"
+          }],
+          "title": "JavaScript Quiz"
+        }],
         "title": "JavaScript Intro",
         "content": "Make your web pages interactive.",
-        "quizzes": [
-          {
-            "quizId": "quiz203",
-            "title": "JavaScript Quiz",
-            "passScorePercent": 60.0,
-            "maxRetries": -1,
-            "questions": [
-              {
-                "questionId": "q5",
-                "text": "Which company developed JavaScript?",
-                "options": ["Netscape", "Microsoft"],
-                "correctAnswer": "Netscape"
-              }
-            ]
-          }
-        ],
-        "attempts": [],
-        "completedStudents": []
+        "attempts": []
       }
-    ],
-    "students": [
-      "e52cf2ec-62e2-4d57-b3bc-47080d1f1450"
+    ]
+  },
+  {
+    "approveStatus": "pending",
+    "description": "test",
+    "students": ["e52cf2ec-62e2-4d57-b3bc-47080d1f1450"],
+    "title": "test",
+    "courseId": "6d0a5a61-9220-45e9-90dc-0a10088924c3",
+    "instructorId": "f10894b7-e35e-4c00-b64a-c2031488a3af",
+    "lessons": [
+      {
+        "completedStudents": [],
+        "lessonId": "f8be665d-8615-401f-a616-e470d45b9f1f",
+        "quizzes": [{
+          "passScorePercent": 60,
+          "maxRetries": 2,
+          "quizId": "0ef1f2f9-fdd8-478e-81e6-6bc61e2561e2",
+          "questions": [
+            {
+              "questionId": "158e363d-881d-477d-8fb0-94e886c99306",
+              "options": [
+                "world1",
+                "world2",
+                "world3",
+                "world4"
+              ],
+              "text": "hello",
+              "correctAnswer": "world1"
+            },
+            {
+              "questionId": "a065037f-d9e2-4c10-a1fa-5f445be13d0e",
+              "options": [
+                "mother1",
+                "mother2",
+                "mother3",
+                "mother4"
+              ],
+              "text": "mother",
+              "correctAnswer": "mother1"
+            }
+          ],
+          "title": "test quiz1"
+        }],
+        "title": "test lesson",
+        "content": "dsfa",
+        "attempts": [{
+          "attemptNumber": 1,
+          "scorePercent": 100,
+          "quizId": "0ef1f2f9-fdd8-478e-81e6-6bc61e2561e2",
+          "selectedIndices": [
+            0,
+            0
+          ],
+          "passed": true,
+          "userId": "e52cf2ec-62e2-4d57-b3bc-47080d1f1450",
+          "attemptId": "e1a63b7e-cdc0-490e-a516-49055baa53e2"
+        }]
+      },
+      {
+        "completedStudents": [],
+        "lessonId": "836387a8-1db5-478c-ae47-c60e59ef3a88",
+        "quizzes": [],
+        "title": "test2 lesson",
+        "content": "adsfaesdf",
+        "attempts": []
+      }
     ]
   }
 ]

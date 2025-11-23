@@ -1,3 +1,4 @@
+
 import javax.swing.SwingUtilities;
 import view.LoginFrame;
 import dao.UserDAO;
@@ -31,7 +32,8 @@ public class Main {
         UserDAO userDAO = new UserDAO("Lab 7/skill_forge/data/users.json");
         CourseDAO courseDAO = new CourseDAO("Lab 7/skill_forge/data/courses.json");
         AdminDAO adminDAO = new AdminDAO("Lab 7/skill_forge/data/users.json");
-        QuizDAO quizDAO = new QuizDAO("Lab 7/skill_forge/data/quizzes.json");
+        // QuizDAO now uses CourseDAO to work with courses.json without overwriting
+        QuizDAO quizDAO = new QuizDAO("Lab 7/skill_forge/data/courses.json", courseDAO);
         
         // Initialize Service Layer (Backend - Business Logic)
         AuthService authService = new AuthService(userDAO);
@@ -40,7 +42,7 @@ public class Main {
         LessonService lessonService = new LessonService(courseDAO);
         AdminService adminService = new AdminService(courseDAO, adminDAO);
         QuizService quizService = new QuizService(quizDAO, courseDAO);
-        
+
         // Initialize Controller Layer (Presentation Logic - Bridge between Frontend and Backend)
         AuthController authController = new AuthController(authService);
         CourseController courseController = new CourseController(courseService);
