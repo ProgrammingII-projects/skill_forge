@@ -119,8 +119,8 @@ public class AdminAddUserFrame extends JFrame {
             JOptionPane.showMessageDialog(this, "User Added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             
             dispose();
-            AdminDashboardFrame AdminDashboardFrame = new AdminDashboardFrame(user,authController, courseController, studentController, lessonController, adminController);
-            AdminDashboardFrame.setVisible(true);
+            ManageUsersFrame ManageUsersFrame = new  ManageUsersFrame( user,  authController,  courseController,  studentController,  lessonController, adminController);
+            ManageUsersFrame.setVisible(true);
         
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "user creating Failed", JOptionPane.ERROR_MESSAGE);
