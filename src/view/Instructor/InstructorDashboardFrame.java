@@ -1,21 +1,30 @@
-package view;
+package view.Instructor;
 
 import javax.swing.*;
-import model.*;
-import model.database_manager.CourseModel;
-import model.database_manager.UserModel;
-import controller.*;
+import model.User;
+import view.LoginFrame;
+import model.Course;
+import controller.CourseController;
+import controller.StudentController;
+import controller.LessonController;
+import controller.AuthController;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.Optional;
+import controller.QuizController;
 
+/**
+ * Instructor Dashboard View (Frontend Layer)
+ * Only interacts with Controllers, not DAOs or Services directly
+ */
 public class InstructorDashboardFrame extends JFrame {
     private User user;
-    private UserModel userModel;
-    private CourseModel courseModel;
     private CourseController courseController;
+    private StudentController studentController;
+    private LessonController lessonController;
+    private AuthController authController;
+    private QuizController quizController;
     private JList<String> courseList;
     private DefaultListModel<String> listModel;
     private JButton createButton;
@@ -24,11 +33,15 @@ public class InstructorDashboardFrame extends JFrame {
     private JButton manageLessonsButton;
     private List<Course> courses;
 
-    public InstructorDashboardFrame(User u, UserModel um, CourseModel cm) {
+    public InstructorDashboardFrame(User u, AuthController authController, CourseController courseController, 
+                               StudentController studentController, LessonController lessonController, 
+                               QuizController quizController) {
         this.user = u;
-        this.userModel = um;
-        this.courseModel = cm;
-        this.courseController = new CourseController(courseModel);
+        this.authController = authController;
+        this.courseController = courseController;
+        this.studentController = studentController;
+        this.lessonController = lessonController;
+        this.quizController = quizController;
         
         setTitle("Instructor - " + u.getUsername());
         setSize(700, 400);
@@ -121,7 +134,7 @@ public class InstructorDashboardFrame extends JFrame {
     }
     
     private void createCourse() {
-        CourseEditorFrame editor = new CourseEditorFrame(user.getUserId(), courseModel, true, null);
+        CourseEditorFrame editor = new CourseEditorFrame(user.getUserId(), courseController, true, null);
         editor.setVisible(true);
         editor.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -138,7 +151,7 @@ public class InstructorDashboardFrame extends JFrame {
             return;
         }
         Course course = courses.get(index);
-        CourseEditorFrame editor = new CourseEditorFrame(user.getUserId(), courseModel, false, course);
+        CourseEditorFrame editor = new CourseEditorFrame(user.getUserId(), courseController, false, course);
         editor.setVisible(true);
         editor.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -155,7 +168,7 @@ public class InstructorDashboardFrame extends JFrame {
             return;
         }
         Course course = courses.get(index);
-        LessonEditorFrame editor = new LessonEditorFrame(course, courseModel);
+        LessonEditorFrame editor = new LessonEditorFrame(course, courseController, lessonController, quizController);
         editor.setVisible(true);
         editor.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -176,8 +189,12 @@ public class InstructorDashboardFrame extends JFrame {
             "Are you sure you want to delete: " + course.getTitle() + "?", 
             "Confirm Delete", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
-            courseController.deleteCourse(course.getCourseId());
-            refreshCourseList();
+            try {
+                courseController.deleteCourse(course.getCourseId());
+                refreshCourseList();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
     
@@ -199,9 +216,8 @@ public class InstructorDashboardFrame extends JFrame {
         sb.append("Total: ").append(studentIds.size()).append(" student(s)\n\n");
         
         for (String studentId : studentIds) {
-            Optional<User> opt = userModel.findById(studentId);
-            if (opt.isPresent()) {
-                User student = opt.get();
+            try {
+                User student = studentController.getUserById(studentId);
                 List<String> completed = student.getProgress().getOrDefault(course.getCourseId(), new java.util.ArrayList<>());
                 int total = course.getLessons().size();
                 int done = completed.size();
@@ -210,8 +226,8 @@ public class InstructorDashboardFrame extends JFrame {
                   .append(" (").append(student.getEmail()).append(")")
                   .append(" - Progress: ").append(done).append("/").append(total)
                   .append(" (").append(String.format("%.1f", percentage)).append("%)\n");
-            } else {
-                sb.append("- Unknown student (ID: ").append(studentId).append(")\n");
+            } catch (Exception ex) {
+                sb.append("- Unknown student (ID: ").append(studentId).append(") - ").append(ex.getMessage()).append("\n");
             }
         }
         
@@ -220,7 +236,7 @@ public class InstructorDashboardFrame extends JFrame {
     
     private void logout() {
         dispose();
-        LoginFrame loginFrame = new LoginFrame(userModel, courseModel);
+        LoginFrame loginFrame = new LoginFrame(authController, courseController, studentController, lessonController, quizController);
         loginFrame.setVisible(true);
     }
 }

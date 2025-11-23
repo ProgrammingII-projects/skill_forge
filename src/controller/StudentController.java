@@ -1,38 +1,28 @@
 package controller;
 
-import model.*;
-import model.database_manager.CourseModel;
-import model.database_manager.UserModel;
+import model.User;
+import service.StudentService;
 
-import java.util.Optional;
-
+/**
+ * Controller for Student operations (Presentation Layer)
+ * Acts as a bridge between View and Service layers
+ */
 public class StudentController {
-    private final UserModel userModel;
-    private final CourseModel courseModel;
+    private final StudentService studentService;
 
-    public StudentController(UserModel userModel, CourseModel courseModel) {
-        this.userModel = userModel;
-        this.courseModel = courseModel;
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
     }
 
     public void enrollStudent(String studentId, String courseId) throws Exception {
-        Optional<User> uopt = userModel.findById(studentId);
-        Optional<Course> copt = courseModel.findById(courseId);
-        if (!uopt.isPresent()) throw new Exception("Student not found");
-        if (!copt.isPresent()) throw new Exception("Course not found");
-        User u = uopt.get();
-        Course c = copt.get();
-        u.enrollCourse(courseId);
-        c.enrollStudent(studentId);
-        userModel.updateUser(u);
-        courseModel.updateCourse(c);
+        studentService.enrollStudent(studentId, courseId);
     }
 
     public void markLessonCompleted(String studentId, String courseId, String lessonId) throws Exception {
-        Optional<User> uopt = userModel.findById(studentId);
-        if (!uopt.isPresent()) throw new Exception("Student not found");
-        User u = uopt.get();
-        u.markLessonCompleted(courseId, lessonId);
-        userModel.updateUser(u);
+        studentService.markLessonCompleted(studentId, courseId, lessonId);
+    }
+
+    public User getUserById(String userId) throws Exception {
+        return studentService.getUserById(userId);
     }
 }

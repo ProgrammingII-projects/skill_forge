@@ -1,17 +1,19 @@
-package model.database_manager;
+package dao;
 
 import java.nio.file.*;
 import java.util.*;
-
 import model.User;
-
 import java.io.*;
 import org.json.JSONArray;
 
-public class UserModel {
+/**
+ * Data Access Object for User entity
+ * Handles all database operations for users (Backend Layer)
+ */
+public class UserDAO  {
     private Path file;
 
-    public UserModel(String filePath) {
+    public UserDAO(String filePath) {
         this.file = Paths.get(filePath);
         try {
             if (!Files.exists(file)) {
@@ -63,3 +65,4 @@ public class UserModel {
         saveAll(list);
     }
 }
+

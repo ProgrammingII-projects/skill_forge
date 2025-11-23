@@ -1,45 +1,33 @@
 package controller;
 
-import model.*;
-import model.database_manager.CourseModel;
-
+import model.Lesson;
+import service.LessonService;
 import java.util.List;
-import java.util.Optional;
 
+/**
+ * Controller for Lesson operations (Presentation Layer)
+ * Acts as a bridge between View and Service layers
+ */
 public class LessonController {
-    private final CourseModel courseModel;
+    private final LessonService lessonService;
 
-    public LessonController(CourseModel courseModel) {
-        this.courseModel = courseModel;
+    public LessonController(LessonService lessonService) {
+        this.lessonService = lessonService;
     }
 
-    public void addLesson(String courseId, model.Lesson lesson) throws Exception {
-        Optional<model.Course> opt = courseModel.findById(courseId);
-        if (!opt.isPresent()) throw new Exception("Course not found");
-        model.Course c = opt.get();
-        c.addLesson(lesson);
-        courseModel.updateCourse(c);
+    public void addLesson(String courseId, Lesson lesson) throws Exception {
+        lessonService.addLesson(courseId, lesson);
     }
 
-    public void editLesson(String courseId, model.Lesson lesson) throws Exception {
-        Optional<model.Course> opt = courseModel.findById(courseId);
-        if (!opt.isPresent()) throw new Exception("Course not found");
-        model.Course c = opt.get();
-        c.updateLesson(lesson);
-        courseModel.updateCourse(c);
+    public void editLesson(String courseId, Lesson lesson) throws Exception {
+        lessonService.editLesson(courseId, lesson);
     }
 
     public void deleteLesson(String courseId, String lessonId) throws Exception {
-        Optional<model.Course> opt = courseModel.findById(courseId);
-        if (!opt.isPresent()) throw new Exception("Course not found");
-        model.Course c = opt.get();
-        c.removeLesson(lessonId);
-        courseModel.updateCourse(c);
+        lessonService.deleteLesson(courseId, lessonId);
     }
 
-    public List<model.Lesson> getLessons(String courseId) throws Exception {
-        Optional<model.Course> opt = courseModel.findById(courseId);
-        if (!opt.isPresent()) throw new Exception("Course not found");
-        return opt.get().getLessons();
+    public List<Lesson> getLessons(String courseId) throws Exception {
+        return lessonService.getLessons(courseId);
     }
 }

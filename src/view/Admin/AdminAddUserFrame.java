@@ -1,8 +1,10 @@
-package view;
+package view.Admin;
 
+import controller.AdminController;
 import controller.AuthController;
 import controller.CourseController;
 import controller.StudentController;
+import model.User;
 import controller.LessonController;
 import javax.swing.*;
 import java.awt.*;
@@ -13,11 +15,14 @@ import java.awt.event.ActionListener;
  * Signup View (Frontend Layer)
  * Only interacts with Controllers, not DAOs or Services directly
  */
-public class SignupFrame extends JFrame {
+public class AdminAddUserFrame extends JFrame {
+
+    private User user;
     private AuthController authController;
     private CourseController courseController;
     private StudentController studentController;
     private LessonController lessonController;
+    private AdminController adminController;
     private JTextField usernameField;
     private JTextField emailField;
     private JPasswordField passwordField;
@@ -25,13 +30,15 @@ public class SignupFrame extends JFrame {
     private JButton signupButton;
     private JButton cancelButton;
 
-    public SignupFrame(AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController) {
+    public AdminAddUserFrame(User user, AuthController authController, CourseController courseController, StudentController studentController, LessonController lessonController, AdminController adminController) {
+        this.user = user;
         this.authController = authController;
         this.courseController = courseController;
         this.studentController = studentController;
         this.lessonController = lessonController;
+        this.adminController = adminController;
         
-        setTitle("Signup");
+        setTitle("Add User");
         setSize(420, 300);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -70,7 +77,7 @@ public class SignupFrame extends JFrame {
         roleLabel.setBounds(30, 165, 100, 25);
         add(roleLabel);
         
-        roleCombo = new JComboBox<>(new String[]{"student", "instructor"});
+        roleCombo = new JComboBox<>(new String[]{"student", "instructor" , "admin"});
         roleCombo.setBounds(140, 165, 240, 25);
         add(roleCombo);
         
@@ -109,13 +116,14 @@ public class SignupFrame extends JFrame {
         try {
             authController.signup(username, email, password, role);
             
-            JOptionPane.showMessageDialog(this, "Account created successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-            dispose();
+            JOptionPane.showMessageDialog(this, "User Added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             
-            LoginFrame loginFrame = new LoginFrame(authController, courseController, studentController, lessonController);
-            loginFrame.setVisible(true);
+            dispose();
+            ManageUsersFrame ManageUsersFrame = new  ManageUsersFrame( user,  authController,  courseController,  studentController,  lessonController, adminController);
+            ManageUsersFrame.setVisible(true);
+        
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Signup Failed", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "user creating Failed", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

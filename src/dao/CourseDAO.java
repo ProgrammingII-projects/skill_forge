@@ -1,4 +1,4 @@
-package model.database_manager;
+package dao;
 
 import java.nio.file.*;
 import java.util.*;
@@ -6,10 +6,14 @@ import java.io.*;
 import org.json.JSONArray;
 import model.Course;
 
-public class CourseModel {
+/**
+ * Data Access Object for Course entity
+ * Handles all database operations for courses (Backend Layer)
+ */
+public class CourseDAO {
     private Path file;
 
-    public CourseModel(String filePath) {
+    public CourseDAO(String filePath) {
         this.file = Paths.get(filePath);
         try {
             if (!Files.exists(file)) {
@@ -62,4 +66,17 @@ public class CourseModel {
         list.removeIf(c -> c.getCourseId().equals(id));
         saveAll(list);
     }
+
+    public synchronized void updateCourseStatus (String courseId, String status){
+        List<Course> list = loadAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getCourseId().equals(courseId)) {
+                list.get(i).setApproveStatus(status);
+                saveAll(list);
+                return;
+            }
+        }
+    }
+
 }
+
