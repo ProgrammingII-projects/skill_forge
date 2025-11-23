@@ -4,6 +4,9 @@ import dao.CourseDAO;
 import dao.UserDAO;
 import model.Course;
 import model.User;
+import model.Certificate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -64,6 +67,33 @@ public class StudentService {
         if (!opt.isPresent()) throw new Exception("User not found");
         return opt.get();
     }
+    public List<Certificate> getCertificates(String studentId)throws Exception  {
+
+        User u = getUserById(studentId);
+        return new ArrayList<>(u.getCertificates());
+    }
+    public Certificate getCertificate(String studentId,String courseId)throws Exception{
+    
+         User u = getUserById(studentId);
+        for(Certificate c : u.getCertificates()){
+            if(c!=null && courseId.equals(c.getCourseId())){
+                return c;
+            }
+        }return null;
+    }
+    public void earnCertificate(String studentId, String courseId) throws Exception {
+        Optional<User> uopt = userDAO.findById(studentId);
+        if (!uopt.isPresent()) throw new Exception("Student not found");
+
+         Optional<Course> copt = courseDAO.findById(courseId);
+        if (!copt.isPresent()) throw new Exception("Course not found");
+
+        User u = uopt.get();
+        Course c = copt.get();
+        u.earnCertificate(new Certificate( studentId, courseId));}
+
+
+
     
     public List<Course> getApprovedCourses() {
         return courseDAO.loadAll().stream()
